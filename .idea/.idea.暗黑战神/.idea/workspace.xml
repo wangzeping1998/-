@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="006b0d47-9eff-4a1f-bb77-8e3b10cadcc0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Compond/Common/Item/007_long/long.FBX.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Compond/Common/Item/007_long/long.FBX.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ResScenes/GameRoot.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ResScenes/GameRoot.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ResScenes/SceneLogin.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ResScenes/SceneLogin.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ResUIAnim/TipsShow.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ResUIAnim/TipsShow.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ResUIAnim/txtTips.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ResUIAnim/txtTips.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/CurrentLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/EditorUserBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/EditorUserBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/LastSceneManagerSetup.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/LastSceneManagerSetup.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/assetDatabase3" beforeDir="false" afterPath="$PROJECT_DIR$/Library/assetDatabase3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/expandedItems" beforeDir="false" afterPath="$PROJECT_DIR$/Library/expandedItems" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/6a/6a00e0c919cb0864a9dab7ee3946e660.info" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/6a/6a00e0c919cb0864a9dab7ee3946e660.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe0.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/GameRoot.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="49" column="16" lean-forward="true" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
+              <folding>
+                <marker date="1591356652859" expanded="true" signature="0:206" ph="/* 文件：GameRoot.cs ... */" />
+                <marker date="1591356652859" expanded="true" signature="214:240" ph="..." />
+                <marker date="1591356652859" expanded="true" signature="279:1115" ph="{...}" />
+                <marker date="1591356652859" expanded="true" signature="412:521" ph="{...}" />
+                <marker date="1591356652859" expanded="true" signature="550:741" ph="{...}" />
+                <marker date="1591356652859" expanded="true" signature="647:706" ph="{...}" />
+                <marker date="1591356652859" expanded="true" signature="763:1027" ph="{...}" />
+                <marker date="1591356652859" expanded="true" signature="1069:1113" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/UIWindow/CreateWind.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="276">
+              <caret line="38" column="48" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+              <folding>
+                <marker date="1591429144654" expanded="true" signature="0:208" ph="/* 文件：CreateWind.cs ... */" />
+                <marker date="1591429144654" expanded="true" signature="216:250" ph="..." />
+                <marker date="1591429144654" expanded="true" signature="288:941" ph="{...}" />
+                <marker date="1591429144654" expanded="true" signature="401:578" ph="{...}" />
+                <marker date="1591429144654" expanded="true" signature="610:735" ph="{...}" />
+                <marker date="1591429144654" expanded="true" signature="765:939" ph="{...}" />
+                <marker date="1591429144654" expanded="true" signature="857:887" ph="{...}" />
+                <marker date="1591429144654" expanded="true" signature="865:883" ph="/* TODO ... */" />
+                <marker date="1591429144654" expanded="true" signature="894:936" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Service/ResSvc.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="136" column="1" selection-start-line="136" selection-start-column="1" selection-end-line="136" selection-end-column="1" />
+              <folding>
+                <marker date="1591428468107" expanded="true" signature="0:204" ph="/* 文件：ResSvc.cs ... */" />
+                <marker date="1591428468107" expanded="true" signature="212:325" ph="..." />
+                <marker date="1591428468107" expanded="true" signature="362:2836" ph="{...}" />
+                <marker date="1591428468107" expanded="true" signature="459:534" ph="{...}" />
+                <marker date="1591428468107" expanded="true" signature="595:1023" ph="{...}" />
+                <marker date="1591428468107" expanded="true" signature="738:1016" ph="{...}" />
+                <marker date="1591428468107" expanded="true" signature="843:1012" ph="{...}" />
+                <marker date="1591428468107" expanded="true" signature="870:904" ph="{...}" />
+                <marker date="1591428468107" expanded="true" signature="1047:1101" ph="{...}" />
+                <marker date="1591428468107" expanded="true" signature="1071:1098" ph="{...}" />
+                <marker date="1591428468107" expanded="true" signature="1248:1428" ph="{...}" />
+                <marker date="1591428468107" expanded="true" signature="1314:1411" ph="{...}" />
+                <marker date="1591428468107" expanded="true" signature="1373:1407" ph="{...}" />
+                <marker date="1591428468107" expanded="true" signature="1431:2834" ph="InitCfgs" />
+                <marker date="1591428468107" expanded="false" signature="1640:2488" ph="{...}" />
+                <marker date="1591428468107" expanded="true" signature="1722:1799" ph="{...}" />
+                <marker date="1591428468107" expanded="true" signature="1806:2485" ph="{...}" />
+                <marker date="1591428468107" expanded="true" signature="1984:2481" ph="{...}" />
+                <marker date="1591428468107" expanded="true" signature="2081:2111" ph="{...}" />
+                <marker date="1591428468107" expanded="true" signature="2234:2476" ph="{...}" />
+                <marker date="1591428468107" expanded="true" signature="2263:2469" ph="{...}" />
+                <marker date="1591428468107" expanded="true" signature="2535:2821" ph="{...}" />
+                <marker date="1591428468107" expanded="true" signature="2660:2726" ph="{...}" />
+                <marker date="1591428468107" expanded="true" signature="2733:2801" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Common/PETools.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+              <folding>
+                <marker date="1591428345633" expanded="true" signature="0:201" ph="/* 文件：PETools.cs ... */" />
+                <marker date="1591428345633" expanded="true" signature="209:235" ph="..." />
+                <marker date="1591428345633" expanded="true" signature="259:438" ph="{...}" />
+                <marker date="1591428345633" expanded="true" signature="326:436" ph="{...}" />
+                <marker date="1591428345633" expanded="true" signature="347:384" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Common/Constants.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+              <folding>
+                <marker date="1591357150183" expanded="true" signature="0:205" ph="/* 文件：Constants.cs ... */" />
+                <marker date="1591357150183" expanded="true" signature="249:475" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/UIWindow/LoginWind.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="48" column="34" lean-forward="true" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
+              <folding>
+                <marker date="1591357774928" expanded="true" signature="0:207" ph="/* 文件：LoginWind.cs ... */" />
+                <marker date="1591357774928" expanded="true" signature="215:249" ph="..." />
+                <marker date="1591357774928" expanded="true" signature="286:1319" ph="{...}" />
+                <marker date="1591357774928" expanded="true" signature="432:801" ph="{...}" />
+                <marker date="1591357774928" expanded="true" signature="633:739" ph="{...}" />
+                <marker date="1591357774928" expanded="true" signature="746:798" ph="{...}" />
+                <marker date="1591357774928" expanded="true" signature="852:1200" ph="{...}" />
+                <marker date="1591357774928" expanded="true" signature="993:1112" ph="{...}" />
+                <marker date="1591357774928" expanded="true" signature="1119:1159" ph="{...}" />
+                <marker date="1591357774928" expanded="true" signature="1162:1196" ph="/* TODO 发送网络消息，请求登入 ... */" />
+                <marker date="1591357774928" expanded="true" signature="1231:1317" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/UIWindow/DynamicWind.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-135">
+              <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+              <folding>
+                <marker date="1591356270119" expanded="true" signature="0:210" ph="/* 文件：DynamicWind.cs ... */" />
+                <marker date="1591356270119" expanded="true" signature="218:326" ph="..." />
+                <marker date="1591356270119" expanded="true" signature="365:1334" ph="{...}" />
+                <marker date="1591356270119" expanded="true" signature="537:590" ph="{...}" />
+                <marker date="1591356270119" expanded="true" signature="625:682" ph="{...}" />
+                <marker date="1591356270119" expanded="true" signature="706:852" ph="{...}" />
+                <marker date="1591356270119" expanded="true" signature="757:849" ph="{...}" />
+                <marker date="1591356270119" expanded="true" signature="887:1196" ph="{...}" />
+                <marker date="1591356270119" expanded="true" signature="1133:1190" ph="{...}" />
+                <marker date="1591356270119" expanded="true" signature="1245:1332" ph="{...}" />
+                <marker date="1591356270119" expanded="true" signature="1305:1329" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ECB5D8E2-0A91-44BC-A4F2-58317D1E56F9/8c/cea475e9/Queue.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="16" column="15" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/System/LoginSys.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="291">
+              <caret line="42" column="16" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
+              <folding>
+                <marker date="1591357809074" expanded="true" signature="0:207" ph="/* 文件：LoginSys.cs ... */" />
+                <marker date="1591357809074" expanded="true" signature="263:913" ph="{...}" />
+                <marker date="1591357809074" expanded="true" signature="394:470" ph="{...}" />
+                <marker date="1591357809074" expanded="false" signature="473:514" ph="/// 进入登入场景 ... " />
+                <marker date="1591357809074" expanded="true" signature="540:704" ph="{...}" />
+                <marker date="1591357809074" expanded="true" signature="546:586" ph="/* 异步加载登入场景 ... */" />
+                <marker date="1591357809074" expanded="true" signature="734:770" ph="{...}" />
+                <marker date="1591357809074" expanded="true" signature="795:911" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/System/LoginSys.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UIWindow/DynamicWind.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Common/PETools.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Common/Constants.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Resources/ResScenes/GameRoot.unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Service/AudioSvc.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UIWindow/LoginWind.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Common/SystemRoot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ECB5D8E2-0A91-44BC-A4F2-58317D1E56F9/8c/cea475e9/Queue.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameRoot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Common/PathDefine.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UIWindow/CreateWind.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Service/ResSvc.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UIWindow/LoadingWind.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Common/LoopDragonAnim.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Common/WindowRoot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C4B5EB23-CFC2-4855-8C54-3F5834EB549A/fd/024bc673/PlayerSettings.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/69C91A38-8311-4498-BAB0-B08D0B37820E/be/c0a9ed7c/PlayerPrefs.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Scripts/UIWindow/LoadingWind.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Service/AudioSvc.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/SystemRoot.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/LoopDragonAnim.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/WindowRoot.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UIWindow/DynamicWind.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameRoot.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/Constants.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UIWindow/LoginWind.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/System/LoginSys.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/PathDefine.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Common/PETools.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Service/ResSvc.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UIWindow/CreateWind.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/.idea.暗黑战神/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/.idea.暗黑战神/.idea/indexLayout.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="676" />
+    <option name="width" value="697" />
+    <option name="height" value="372" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="UnityExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="FileSystemExplorer" />
+      <pane id="AssemblyExplorer" />
+      <pane id="UnityExplorer">
+        <option name="show-hidden-items" value="false" />
+        <option name="show-project-names" value="true" />
+      </pane>
+      <pane id="SolutionExplorer">
+        <option name="show-all-files" value="false" />
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="userSelectedPid" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" pid="23156">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" value="23156" />
+      <option name="userSelectedPid" value="false" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="006b0d47-9eff-4a1f-bb77-8e3b10cadcc0" name="Default Changelist" comment="" />
+      <created>1591337750101</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1591337750101</updated>
+      <workItem from="1591337759472" duration="3751000" />
+      <workItem from="1591341750004" duration="12136000" />
+      <workItem from="1591427954160" duration="2078000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="17965000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.399361" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="NuGet" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Performance Profiler" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Unity" order="11" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="bottom" id="Unit Tests" order="13" />
+      <window_info anchor="bottom" id="Terminal" order="14" />
+      <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Errors In Solution" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="5" />
+    </layout>
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Common/SystemRoot.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="23" />
+          <folding>
+            <marker date="1591346410454" expanded="true" signature="0:207" ph="/* 文件：SystemRoot.cs ... */" />
+            <marker date="1591346410454" expanded="true" signature="268:426" ph="{...}" />
+            <marker date="1591346410454" expanded="true" signature="358:424" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/UIWindow/LoadingWind.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="27" column="66" selection-start-line="27" selection-start-column="66" selection-end-line="27" selection-end-column="66" />
+          <folding>
+            <marker date="1591343527035" expanded="true" signature="0:210" ph="/* 文件：LoadingWind.cs ... */" />
+            <marker date="1591343527035" expanded="true" signature="218:252" ph="..." />
+            <marker date="1591343527035" expanded="true" signature="291:919" ph="{...}" />
+            <marker date="1591343527035" expanded="true" signature="444:674" ph="{...}" />
+            <marker date="1591343527035" expanded="true" signature="711:917" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Common/LoopDragonAnim.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding>
+            <marker date="1591347207013" expanded="true" signature="0:213" ph="/* 文件：LoopDragonAnim.cs ... */" />
+            <marker date="1591347207013" expanded="true" signature="221:247" ph="..." />
+            <marker date="1591347207013" expanded="true" signature="292:575" ph="{...}" />
+            <marker date="1591347207013" expanded="true" signature="342:387" ph="{...}" />
+            <marker date="1591347207013" expanded="true" signature="410:487" ph="{...}" />
+            <marker date="1591347207013" expanded="true" signature="433:484" ph="{...}" />
+            <marker date="1591347207013" expanded="true" signature="519:573" ph="{...}" />
+            <marker date="1591347207013" expanded="true" signature="542:570" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Common/WindowRoot.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+          <folding>
+            <marker date="1591347538448" expanded="true" signature="0:209" ph="/* 文件：WindowRoot.cs ... */" />
+            <marker date="1591347538448" expanded="true" signature="217:251" ph="..." />
+            <marker date="1591347538448" expanded="true" signature="292:1737" ph="{...}" />
+            <marker date="1591347538448" expanded="true" signature="416:578" ph="{...}" />
+            <marker date="1591347538448" expanded="true" signature="460:504" ph="{...}" />
+            <marker date="1591347538448" expanded="true" signature="521:544" ph="{...}" />
+            <marker date="1591347538448" expanded="true" signature="551:575" ph="{...}" />
+            <marker date="1591347538448" expanded="true" signature="614:680" ph="{...}" />
+            <marker date="1591347538448" expanded="true" signature="717:759" ph="{...}" />
+            <marker date="1591347538448" expanded="true" signature="762:1731" ph="Tool Functions" />
+            <marker date="1591347538448" expanded="true" signature="847:879" ph="{...}" />
+            <marker date="1591347538448" expanded="true" signature="945:991" ph="{...}" />
+            <marker date="1591347538448" expanded="true" signature="1064:1113" ph="{...}" />
+            <marker date="1591347538448" expanded="true" signature="1173:1217" ph="{...}" />
+            <marker date="1591347538448" expanded="true" signature="1276:1320" ph="{...}" />
+            <marker date="1591347538448" expanded="true" signature="1375:1403" ph="{...}" />
+            <marker date="1591347538448" expanded="true" signature="1451:1488" ph="{...}" />
+            <marker date="1591347538448" expanded="true" signature="1543:1603" ph="{...}" />
+            <marker date="1591347538448" expanded="true" signature="1665:1718" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C4B5EB23-CFC2-4855-8C54-3F5834EB549A/fd/024bc673/PlayerSettings.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="2017" column="18" selection-start-line="2017" selection-start-column="18" selection-end-line="2017" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Service/AudioSvc.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="32" column="27" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="27" />
+          <folding>
+            <marker date="1591345101707" expanded="true" signature="0:204" ph="/* 文件：AudioSvc.cs ... */" />
+            <marker date="1591345101707" expanded="true" signature="263:879" ph="{...}" />
+            <marker date="1591345101707" expanded="true" signature="380:438" ph="{...}" />
+            <marker date="1591345101707" expanded="true" signature="497:717" ph="{...}" />
+            <marker date="1591345101707" expanded="true" signature="636:714" ph="{...}" />
+            <marker date="1591345101707" expanded="true" signature="756:877" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Common/PathDefine.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="23" />
+          <folding>
+            <marker date="1591359027043" expanded="true" signature="0:205" ph="/* 文件：PathDefine.cs ... */" />
+            <marker date="1591359027043" expanded="true" signature="250:342" ph="{...}" />
+            <marker date="1591359027043" expanded="true" signature="254:337" ph="Configs" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Common/Constants.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+          <folding>
+            <marker date="1591357150183" expanded="true" signature="0:205" ph="/* 文件：Constants.cs ... */" />
+            <marker date="1591357150183" expanded="true" signature="249:475" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/UIWindow/DynamicWind.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-135">
+          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+          <folding>
+            <marker date="1591356270119" expanded="true" signature="0:210" ph="/* 文件：DynamicWind.cs ... */" />
+            <marker date="1591356270119" expanded="true" signature="218:326" ph="..." />
+            <marker date="1591356270119" expanded="true" signature="365:1334" ph="{...}" />
+            <marker date="1591356270119" expanded="true" signature="537:590" ph="{...}" />
+            <marker date="1591356270119" expanded="true" signature="625:682" ph="{...}" />
+            <marker date="1591356270119" expanded="true" signature="706:852" ph="{...}" />
+            <marker date="1591356270119" expanded="true" signature="757:849" ph="{...}" />
+            <marker date="1591356270119" expanded="true" signature="887:1196" ph="{...}" />
+            <marker date="1591356270119" expanded="true" signature="1133:1190" ph="{...}" />
+            <marker date="1591356270119" expanded="true" signature="1245:1332" ph="{...}" />
+            <marker date="1591356270119" expanded="true" signature="1305:1329" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ECB5D8E2-0A91-44BC-A4F2-58317D1E56F9/8c/cea475e9/Queue.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="16" column="15" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Common/PETools.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+          <folding>
+            <marker date="1591428345633" expanded="true" signature="0:201" ph="/* 文件：PETools.cs ... */" />
+            <marker date="1591428345633" expanded="true" signature="209:235" ph="..." />
+            <marker date="1591428345633" expanded="true" signature="259:438" ph="{...}" />
+            <marker date="1591428345633" expanded="true" signature="326:436" ph="{...}" />
+            <marker date="1591428345633" expanded="true" signature="347:384" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Service/ResSvc.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="136" column="1" selection-start-line="136" selection-start-column="1" selection-end-line="136" selection-end-column="1" />
+          <folding>
+            <marker date="1591428468107" expanded="true" signature="0:204" ph="/* 文件：ResSvc.cs ... */" />
+            <marker date="1591428468107" expanded="true" signature="212:325" ph="..." />
+            <marker date="1591428468107" expanded="true" signature="362:2836" ph="{...}" />
+            <marker date="1591428468107" expanded="true" signature="459:534" ph="{...}" />
+            <marker date="1591428468107" expanded="true" signature="595:1023" ph="{...}" />
+            <marker date="1591428468107" expanded="true" signature="738:1016" ph="{...}" />
+            <marker date="1591428468107" expanded="true" signature="843:1012" ph="{...}" />
+            <marker date="1591428468107" expanded="true" signature="870:904" ph="{...}" />
+            <marker date="1591428468107" expanded="true" signature="1047:1101" ph="{...}" />
+            <marker date="1591428468107" expanded="true" signature="1071:1098" ph="{...}" />
+            <marker date="1591428468107" expanded="true" signature="1248:1428" ph="{...}" />
+            <marker date="1591428468107" expanded="true" signature="1314:1411" ph="{...}" />
+            <marker date="1591428468107" expanded="true" signature="1373:1407" ph="{...}" />
+            <marker date="1591428468107" expanded="true" signature="1431:2834" ph="InitCfgs" />
+            <marker date="1591428468107" expanded="false" signature="1640:2488" ph="{...}" />
+            <marker date="1591428468107" expanded="true" signature="1722:1799" ph="{...}" />
+            <marker date="1591428468107" expanded="true" signature="1806:2485" ph="{...}" />
+            <marker date="1591428468107" expanded="true" signature="1984:2481" ph="{...}" />
+            <marker date="1591428468107" expanded="true" signature="2081:2111" ph="{...}" />
+            <marker date="1591428468107" expanded="true" signature="2234:2476" ph="{...}" />
+            <marker date="1591428468107" expanded="true" signature="2263:2469" ph="{...}" />
+            <marker date="1591428468107" expanded="true" signature="2535:2821" ph="{...}" />
+            <marker date="1591428468107" expanded="true" signature="2660:2726" ph="{...}" />
+            <marker date="1591428468107" expanded="true" signature="2733:2801" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/UIWindow/CreateWind.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="38" column="48" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+          <folding>
+            <marker date="1591429144654" expanded="true" signature="0:208" ph="/* 文件：CreateWind.cs ... */" />
+            <marker date="1591429144654" expanded="true" signature="216:250" ph="..." />
+            <marker date="1591429144654" expanded="true" signature="288:941" ph="{...}" />
+            <marker date="1591429144654" expanded="true" signature="401:578" ph="{...}" />
+            <marker date="1591429144654" expanded="true" signature="610:735" ph="{...}" />
+            <marker date="1591429144654" expanded="true" signature="765:939" ph="{...}" />
+            <marker date="1591429144654" expanded="true" signature="857:887" ph="{...}" />
+            <marker date="1591429144654" expanded="true" signature="865:883" ph="/* TODO ... */" />
+            <marker date="1591429144654" expanded="true" signature="894:936" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/GameRoot.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="49" column="16" lean-forward="true" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
+          <folding>
+            <marker date="1591356652859" expanded="true" signature="0:206" ph="/* 文件：GameRoot.cs ... */" />
+            <marker date="1591356652859" expanded="true" signature="214:240" ph="..." />
+            <marker date="1591356652859" expanded="true" signature="279:1115" ph="{...}" />
+            <marker date="1591356652859" expanded="true" signature="412:521" ph="{...}" />
+            <marker date="1591356652859" expanded="true" signature="550:741" ph="{...}" />
+            <marker date="1591356652859" expanded="true" signature="647:706" ph="{...}" />
+            <marker date="1591356652859" expanded="true" signature="763:1027" ph="{...}" />
+            <marker date="1591356652859" expanded="true" signature="1069:1113" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/69C91A38-8311-4498-BAB0-B08D0B37820E/be/c0a9ed7c/PlayerPrefs.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="16" column="3" lean-forward="true" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/UIWindow/LoginWind.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="48" column="34" lean-forward="true" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
+          <folding>
+            <marker date="1591357774928" expanded="true" signature="0:207" ph="/* 文件：LoginWind.cs ... */" />
+            <marker date="1591357774928" expanded="true" signature="215:249" ph="..." />
+            <marker date="1591357774928" expanded="true" signature="286:1319" ph="{...}" />
+            <marker date="1591357774928" expanded="true" signature="432:801" ph="{...}" />
+            <marker date="1591357774928" expanded="true" signature="633:739" ph="{...}" />
+            <marker date="1591357774928" expanded="true" signature="746:798" ph="{...}" />
+            <marker date="1591357774928" expanded="true" signature="852:1200" ph="{...}" />
+            <marker date="1591357774928" expanded="true" signature="993:1112" ph="{...}" />
+            <marker date="1591357774928" expanded="true" signature="1119:1159" ph="{...}" />
+            <marker date="1591357774928" expanded="true" signature="1162:1196" ph="/* TODO 发送网络消息，请求登入 ... */" />
+            <marker date="1591357774928" expanded="true" signature="1231:1317" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/System/LoginSys.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="42" column="16" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
+          <folding>
+            <marker date="1591357809074" expanded="true" signature="0:207" ph="/* 文件：LoginSys.cs ... */" />
+            <marker date="1591357809074" expanded="true" signature="263:913" ph="{...}" />
+            <marker date="1591357809074" expanded="true" signature="394:470" ph="{...}" />
+            <marker date="1591357809074" expanded="false" signature="473:514" ph="/// 进入登入场景 ... " />
+            <marker date="1591357809074" expanded="true" signature="540:704" ph="{...}" />
+            <marker date="1591357809074" expanded="true" signature="546:586" ph="/* 异步加载登入场景 ... */" />
+            <marker date="1591357809074" expanded="true" signature="734:770" ph="{...}" />
+            <marker date="1591357809074" expanded="true" signature="795:911" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

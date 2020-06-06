@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\wangz\.Rider2019.1\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\wangz\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_暗黑战神.-1358521483.00" t="ExcludeRecursive" />
+    <e p="D:\GitDirectory\暗黑战神" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets\Compond" t="Include">
+        <e p="Shader" t="Include">
+          <e p="MogoSkybox.shader" t="Include" />
+        </e>
+      </e>
+      <e p="Assets\Plugins" t="Include">
+        <e p="Editor" t="Include">
+          <e p="ScriptsInfoRecoder.cs" t="Include" />
+          <e p="UnityToSVN.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Assets\Resources" t="Include">
+        <e p="ResCfgs" t="Include">
+          <e p="rdname.xml" t="Include" />
+        </e>
+      </e>
+      <e p="Assets\Scripts" t="Include">
+        <e p="Common" t="Include">
+          <e p="Constants.cs" t="Include" />
+          <e p="LoopDragonAnim.cs" t="Include" />
+          <e p="PathDefine.cs" t="Include" />
+          <e p="PETools.cs" t="Include" />
+          <e p="SystemRoot.cs" t="Include" />
+          <e p="WindowRoot.cs" t="Include" />
+        </e>
+        <e p="GameRoot.cs" t="Include" />
+        <e p="Service" t="Include">
+          <e p="AudioSvc.cs" t="Include" />
+          <e p="ResSvc.cs" t="Include" />
+        </e>
+        <e p="system" t="Include">
+          <e p="LoginSys.cs" t="Include" />
+        </e>
+        <e p="UIWindow" t="Include">
+          <e p="CreateWind.cs" t="Include" />
+          <e p="DynamicWind.cs" t="Include" />
+          <e p="LoadingWind.cs" t="Include" />
+          <e p="LoginWind.cs" t="Include" />
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="暗黑战神.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>

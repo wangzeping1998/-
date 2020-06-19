@@ -7,6 +7,7 @@
 *****************************************************/
 
 using System;
+using PEProtocol;
 using UnityEngine;
 
 public class GameRoot : MonoBehaviour
@@ -15,6 +16,14 @@ public class GameRoot : MonoBehaviour
 	
 	public LoadingWind loadingWind;
 	public DynamicWind dynamicWind;
+	
+	private PlayerData _playerData = null;
+
+	public PlayerData playerData
+	{
+		get { return _playerData; }
+	}
+
 	private void Start()
 	{
 		instance = this;
@@ -39,13 +48,16 @@ public class GameRoot : MonoBehaviour
 		//服务模块初始化
 		ResSvc res = GetComponent<ResSvc>();
 		res.InitSvc();
+		NetSvc net = GetComponent<NetSvc>();
+		net.InitSvc();
 		AudioSvc audio = GetComponent<AudioSvc>();
 		audio.InitSvc();
 		
 		//业务系统初始化
 		LoginSys login = GetComponent<LoginSys>();
 		login.InitSys();
-		
+		MainCitySys mainCitySys = GetComponent<MainCitySys>();
+		mainCitySys.InitSys();
 		//进入登入场景并加载UI
 		login.EnterLogin();
 		
@@ -55,5 +67,15 @@ public class GameRoot : MonoBehaviour
 	public static void AddTips(string tips)
 	{
 		instance.dynamicWind.AddTips(tips);
+	}
+
+	public void SetPlayerData(RspLogin msg)
+	{
+		this._playerData = msg.playerData;
+	}
+
+	public void SetPlayerName(string name)
+	{
+		this._playerData.name = name;
 	}
 }

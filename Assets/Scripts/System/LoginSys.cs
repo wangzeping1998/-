@@ -6,6 +6,7 @@
 	功能：登入系统业务逻辑
 *****************************************************/
 
+using PEProtocol;
 using UnityEngine;
 
 public class LoginSys : SystemRoot
@@ -40,12 +41,34 @@ public class LoginSys : SystemRoot
 		loginWind.SetWindowState();
 	}
 
-	public void RspLogin()
+	public void RspLogin(GameMsg msg)
 	{
 		GameRoot.AddTips("登入成功");
 		
-		//打开角色创建界面
-		createWind.SetWindowState();
+		GameRoot.instance.SetPlayerData(msg.rspLogin);
+		if (msg.rspLogin.playerData.name == "")
+		{
+			//没有名字信息，打开创建角色窗口
+			createWind.SetWindowState();
+		}
+		else
+		{
+			//进入主城
+			MainCitySys.instance.EnterMainCity();
+		}
+		
 		loginWind.SetWindowState(false);
 	}
+
+	public void RspRename(GameMsg msg)
+	{
+		GameRoot.instance.SetPlayerName(msg.rspRename.name);
+		
+		MainCitySys.instance.EnterMainCity();
+		
+		createWind.SetWindowState(false);
+	}
+	
+	
+	
 }

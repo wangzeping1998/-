@@ -75,22 +75,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Common\BaseData.cs" />
     <Compile Include="Assets\Scripts\Common\Constants.cs" />
     <Compile Include="Assets\Scripts\Common\LoopDragonAnim.cs" />
     <Compile Include="Assets\Scripts\Common\PathDefine.cs" />
+    <Compile Include="Assets\Scripts\Common\PEListener.cs" />
     <Compile Include="Assets\Scripts\Common\PETools.cs" />
     <Compile Include="Assets\Scripts\Common\SystemRoot.cs" />
     <Compile Include="Assets\Scripts\Common\WindowRoot.cs" />
     <Compile Include="Assets\Scripts\GameRoot.cs" />
+    <Compile Include="Assets\Scripts\Net\ClientSession.cs" />
+    <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Service\AudioSvc.cs" />
+    <Compile Include="Assets\Scripts\Service\NetSvc.cs" />
     <Compile Include="Assets\Scripts\Service\ResSvc.cs" />
     <Compile Include="Assets\Scripts\System\LoginSys.cs" />
+    <Compile Include="Assets\Scripts\System\MainCitySys.cs" />
     <Compile Include="Assets\Scripts\UIWindow\CreateWind.cs" />
     <Compile Include="Assets\Scripts\UIWindow\DynamicWind.cs" />
     <Compile Include="Assets\Scripts\UIWindow\LoadingWind.cs" />
     <Compile Include="Assets\Scripts\UIWindow\LoginWind.cs" />
+    <Compile Include="Assets\Scripts\UIWindow\MainCityWind.cs" />
+    <None Include="Assets\Resources\ResCfgs\map.xml" />
+    <None Include="Assets\Compond\MakeChar\Shader\PlayerShader.shader" />
     <None Include="Assets\Resources\ResCfgs\rdname.xml" />
+    <None Include="Assets\Compond\Shader\MonsterShader.shader" />
+    <None Include="Assets\Compond\MakeChar\Shader\MogoFakeLight.shader" />
     <None Include="Assets\Compond\Shader\MogoSkybox.shader" />
+    <None Include="Assets\Compond\MakeScene\SceneShader\MogoTransparentDiffuse.shader" />
+    <None Include="Assets\Compond\Shader\Mul-skybox.shader" />
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>D:/Program Files/UnityVersion/2017.4.36c1/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
     </Reference>
@@ -258,6 +271,12 @@
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>D:/Program Files/UnityVersion/2017.4.36c1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="PEProtocol">
+      <HintPath>D:/GitDirectory/暗黑战神/Assets/Scripts/Net/PEProtocol.dll</HintPath>
+    </Reference>
+    <Reference Include="PESocket">
+      <HintPath>D:/GitDirectory/暗黑战神/Assets/Scripts/Net/PESocket.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/wangz/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll</HintPath>

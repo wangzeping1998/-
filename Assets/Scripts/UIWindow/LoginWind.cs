@@ -6,6 +6,7 @@
 	功能：Nothing
 *****************************************************/
 
+using PEProtocol;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,7 @@ public class LoginWind : WindowRoot
 	public Button btnEnter;
 	public Button btnNotice;
 
+	
 	protected override void InitWind()
 	{
 		base.InitWind();
@@ -35,24 +37,32 @@ public class LoginWind : WindowRoot
 		}
 	}
 
-	//TODO 更新本地存储的账号密码
+
 
 	public void ClickEnterBtn()
 	{
 		audioSvc.PlayUIAudio(Constants.UILoginBtn);
-		string acct = iptAcct.text;
-		string pass = iptPass.text;
-		if (acct != "" && pass != "")
+		string _acct = iptAcct.text;
+		string _pass = iptPass.text;
+		if (_acct != "" && _pass != "")
 		{
-			PlayerPrefs.SetString("Acct",acct);
-			PlayerPrefs.SetString("Pass",acct);
-			LoginSys.instance.RspLogin();
+			PlayerPrefs.SetString("Acct",_acct);
+			PlayerPrefs.SetString("Pass",_acct);
+			
+			netSvc.SendMsg(new GameMsg()
+			{
+				cmd = (int)CMD.ReqLogin,
+				reqLogin = new ReqLogin()
+				{
+					acct = _acct,
+					pass = _pass
+				}
+			});
 		}
 		else
 		{
 			GameRoot.AddTips("账号或密码为空");
 		}
-		//TODO 发送网络消息，请求登入
 		//TODO Remove
 
 	}

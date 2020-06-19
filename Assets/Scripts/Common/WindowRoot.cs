@@ -6,13 +6,16 @@
 	功能：Nothing
 *****************************************************/
 
+using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class WindowRoot : MonoBehaviour
 {
 	protected ResSvc resSvc = null;
 	protected AudioSvc audioSvc = null;
+	protected NetSvc netSvc = null;
 	
 	public void SetWindowState(bool isActive = true)
 	{
@@ -35,12 +38,14 @@ public class WindowRoot : MonoBehaviour
 	{
 		resSvc = ResSvc.instance;
 		audioSvc = AudioSvc.instance;
+		netSvc = NetSvc.instance;
 	}
 
 	protected virtual void ClearWind()
 	{
 		resSvc = null;
 		audioSvc = null;
+		netSvc = null;
 	}
 
 	#region Tool Functions
@@ -91,6 +96,39 @@ public class WindowRoot : MonoBehaviour
 	}
 
 	#endregion
+
+	#region Click Evts
+
+	protected T GetOrAddComponent<T>(GameObject go) where T: Component
+	{
+		T t = go.GetComponent<T>();
+		if (t == null)
+		{
+			t = go.AddComponent<T>();
+		}
+
+		return t;
+	}
+	
+	protected void OnClickDown(GameObject go,Action<PointerEventData> cb)
+	{
+		PEListener listen = GetOrAddComponent<PEListener>(go);
+		listen.onClickDown = cb;
+	}
+
+	protected void OnClickUp(GameObject go,Action<PointerEventData> cb)
+	{
+		PEListener listen = GetOrAddComponent<PEListener>(go);
+		listen.onClickUp = cb;
+	}
+	
+	protected void OnDrag(GameObject go,Action<PointerEventData> cb)
+	{
+		PEListener listen = GetOrAddComponent<PEListener>(go);
+		listen.onDrag = cb;
+	}
+	#endregion
+
 	
 	
 }

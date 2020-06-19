@@ -284,6 +284,12 @@
     <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
       <HintPath>D:/GitDirectory/暗黑战神/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
     </Reference>
+    <Reference Include="PEProtocol">
+      <HintPath>D:/GitDirectory/暗黑战神/Assets/Scripts/Net/PEProtocol.dll</HintPath>
+    </Reference>
+    <Reference Include="PESocket">
+      <HintPath>D:/GitDirectory/暗黑战神/Assets/Scripts/Net/PESocket.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/wangz/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>

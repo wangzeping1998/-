@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEServer", "PEServer\PEServer.csproj", "{B92F7DB8-550A-4C22-8C5A-F27F3D06020B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Protocol", "Protocol\Protocol.csproj", "{BA58ACE1-EF02-40A1-8048-A0E8E8C2C931}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B92F7DB8-550A-4C22-8C5A-F27F3D06020B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B92F7DB8-550A-4C22-8C5A-F27F3D06020B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B92F7DB8-550A-4C22-8C5A-F27F3D06020B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B92F7DB8-550A-4C22-8C5A-F27F3D06020B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA58ACE1-EF02-40A1-8048-A0E8E8C2C931}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA58ACE1-EF02-40A1-8048-A0E8E8C2C931}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA58ACE1-EF02-40A1-8048-A0E8E8C2C931}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA58ACE1-EF02-40A1-8048-A0E8E8C2C931}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F9898F5F-DB99-4C37-B533-5E0CB6A1A885}
+	EndGlobalSection
+EndGlobal

@@ -6,6 +6,7 @@
 	功能：角色创建界面
 *****************************************************/
 
+using PEProtocol;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -38,8 +39,16 @@ public class CreateWind : WindowRoot
 		audioSvc.PlayUIAudio(Constants.UIClickBtn);
 		if (!string.IsNullOrEmpty(iptName.text))
 		{
-			//TODO
-			//发送网络消息
+			GameMsg msg = new GameMsg()
+			{
+				cmd = (int) CMD.ReqRename,
+				reqRename = new ReqRename()
+				{
+					name = iptName.text
+				}
+			};
+			
+			netSvc.SendMsg(msg);
 		}
 		else
 		{

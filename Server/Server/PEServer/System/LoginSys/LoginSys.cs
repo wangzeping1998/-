@@ -25,13 +25,14 @@ class LoginSys
     }
 
     private CacheSvc cacheSvc;
+    private TimerSvc timerSvc;
 
     public void Init()
     {
         cacheSvc = CacheSvc.Instance;
+        timerSvc = TimerSvc.Instance;
         PECommon.Log("LoginSys Init Done.");
     }
-
 
     public void ReqLogin(MsgPack pack)
     {
@@ -57,6 +58,32 @@ class LoginSys
             }
             else
             {
+                //登入成功
+
+                //计算体力最大值
+                int power = pd.power;
+                int powerMax = PECommon.GetPowerLimit(pd.lv);
+                if (pd.power < powerMax)
+                {
+                    long nowTime = timerSvc.GetNowTime();
+                    long millisecendsCount = nowTime - pd.time;
+                    //计算玩家离线时间回复体力值
+                    int addPower = (int)(millisecendsCount / (1000  *60* PECommon.PowerAddSpace)) * PECommon.PowerAddCount;
+                    if (addPower > 0)
+                    {
+                        pd.power += addPower;
+                        if (pd.power > powerMax)
+                        {
+                            pd.power = powerMax;
+                        }
+                    }
+                }
+
+                if (pd.power != power)
+                {
+                    cacheSvc.UpdataPlayerData(pd.id, pd);
+                }
+
                 msg.rspLogin = new RspLogin()
                 {
                     playerData = pd
@@ -87,7 +114,7 @@ class LoginSys
             PlayerData playerData = cacheSvc.GetPlayerDataBySession(pack.session);
             playerData.name = rename.name;
 
-            if (!cacheSvc.UpdataPlayerData(playerData.id,playerData))
+            if (!cacheSvc.UpdataPlayerData(playerData.id, playerData))
             {
                 msg.err = (int)ErrorCode.UpdateDBError;
             }
@@ -105,8 +132,19 @@ class LoginSys
 
     }
 
+    //下线
     public void ClearOfflineData(ServerSession session)
     {
+        //写入离线时间
+        PlayerData pd = cacheSvc.GetPlayerDataBySession(session);
+        if (pd!=null)
+        {
+            pd.time = timerSvc.GetNowTime();
+            if (!cacheSvc.UpdataPlayerData(pd.id,pd))
+            {
+                PECommon.Log("Update offline time error!", LogType.Error);
+            }
+        }
         cacheSvc.AcctOffLine(session);
     }
 }

@@ -9,11 +9,25 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
-public class PEListener : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IDragHandler
+public class PEListener : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IDragHandler,IPointerClickHandler
 {
+	public Action<object> onClick;
 	public Action<PointerEventData> onClickDown;
 	public Action<PointerEventData> onClickUp;
 	public Action<PointerEventData> onDrag;
+
+	public object args=null;
+		
+	/// <summary>
+	/// 点击
+	/// </summary>
+	public void OnPointerClick(PointerEventData eventData)
+	{
+		if (onClick != null)
+		{
+			onClick.Invoke(args);
+		}
+	}
 	
 	/// <summary>
 	/// 按下
@@ -47,4 +61,5 @@ public class PEListener : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,ID
 			onDrag.Invoke(eventData);
 		}
 	}
+
 }

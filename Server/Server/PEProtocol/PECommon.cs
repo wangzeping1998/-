@@ -40,8 +40,15 @@ public class PECommon
         return ((lv - 1) / 10) * 150 + 150;
     }
 
+    /// <summary>
+    /// 计算升级所需经验
+    /// </summary>
     public static int GetExpUpValByLv(int lv)
     {
         return 100 * lv * lv;
     }
+
+
+    public const int PowerAddSpace = 5;    //体力增加间隔
+    public const int PowerAddCount = 2;    //每次增加体力值
 }

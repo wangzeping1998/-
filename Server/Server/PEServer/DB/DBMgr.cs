@@ -48,8 +48,12 @@ class DBMgr
             reader = cmd.ExecuteReader();
             if (reader.Read())
             {
+                //账号存在
                 isNew = false;
+                //获得密码信息
                 string _pass = reader.GetString("pass");
+                //密码正确
+                //为数据结构赋值
                 if (_pass.Equals(pass))
                 {
                     //密码正确返回玩家数据
@@ -62,6 +66,7 @@ class DBMgr
                         power = reader.GetInt32("power"),
                         coin = reader.GetInt32("coin"),
                         diamond = reader.GetInt32("diamond"),
+                        crystal = reader.GetInt32("crystal"),
                         hp = reader.GetInt32("diamond"),
                         ad = reader.GetInt32("ad"),
                         ap = reader.GetInt32("ap"),
@@ -70,13 +75,38 @@ class DBMgr
                         dodge = reader.GetInt32("dodge"),
                         pierce = reader.GetInt32("pierce"),
                         critical = reader.GetInt32("critical"),
+                        guideId = reader.GetInt32("guideId"),
+                        time = reader.GetInt64("time"),
                     };
 
+                    #region strong
+                    //星级数据结构  10#10#10#10#10#8#
+                    string[] strongStrArr = reader.GetString("strong").Split('#');
+                    int[] _strongArr = new int[6];
+                    for (int i = 0; i < strongStrArr.Length; i++)
+                    {
+                        if (strongStrArr[i] == "")
+                        {
+                            continue;
+                        }
+
+                        if (int.TryParse(strongStrArr[i],out int starLv))
+                        {
+                            _strongArr[i] = starLv;
+                        }
+                        else
+                        {
+                            PECommon.Log("Parse strong data error!", LogType.Error);
+                        }
+                    }
+                    playerData.strongArr = _strongArr;
+                    #endregion
                 }
             }
             else
             {
-
+                //账号不存在
+                //是新账号，自动创建
                 if (isNew)
                 {
                     playerData = new PlayerData
@@ -85,10 +115,11 @@ class DBMgr
                         name = "",
                         lv = 1,
                         exp = 0,
-                        power = 500,
+                        power = 150,
                         coin = 5000,
                         diamond = 500,
-                        hp =2000,
+                        crystal = 500,
+                        hp = 2000,
                         ad = 275,
                         ap = 265,
                         addef = 67,
@@ -96,6 +127,9 @@ class DBMgr
                         dodge = 7,
                         pierce = 5,
                         critical = 2,
+                        guideId = 1001,
+                        strongArr = new int[6],
+                        time = TimerSvc.Instance.GetNowTime()
                     };
                 }
 
@@ -123,14 +157,14 @@ class DBMgr
     }
 
     /// <summary>
-    /// 在数据库中根据用户名和密码插入角色数据，并返回角色ID
+    /// 插入数据，返回ID
     /// </summary>
     private int InsertNewAcctData(string acct,string pass ,PlayerData pd)
     {
         int id = -1;
         try
         {
-            MySqlCommand cmd = new MySqlCommand("insert into account set acct=@acct, pass=@pass, name=@name, level=@level,exp=@exp,power=@power,coin=@coin,diamond=@diamond,hp=@hp,ad=@ad,ap=@ap,addef=@addef,apdef=@apdef,dodge=@dodge,pierce=@pierce,critical=@critical", conn);
+            MySqlCommand cmd = new MySqlCommand("insert into account set acct=@acct, pass=@pass, name=@name, level=@level,exp=@exp,power=@power,coin=@coin,diamond=@diamond,crystal=@crystal,hp=@hp,ad=@ad,ap=@ap,addef=@addef,apdef=@apdef,dodge=@dodge,pierce=@pierce,critical=@critical,strong=@strong,guideId = @guideId,time = @time", conn);
             cmd.Parameters.AddWithValue("acct", acct);
             cmd.Parameters.AddWithValue("pass", pass);
             cmd.Parameters.AddWithValue("name", pd.name);
@@ -139,6 +173,7 @@ class DBMgr
             cmd.Parameters.AddWithValue("power", pd.power);
             cmd.Parameters.AddWithValue("coin", pd.coin);
             cmd.Parameters.AddWithValue("diamond", pd.diamond);
+            cmd.Parameters.AddWithValue("crystal", pd.crystal);
             cmd.Parameters.AddWithValue("hp", pd.hp);
             cmd.Parameters.AddWithValue("ad", pd.ad);
             cmd.Parameters.AddWithValue("ap", pd.ap);
@@ -147,6 +182,20 @@ class DBMgr
             cmd.Parameters.AddWithValue("dodge", pd.dodge);
             cmd.Parameters.AddWithValue("pierce", pd.pierce);
             cmd.Parameters.AddWithValue("critical", pd.critical);
+            cmd.Parameters.AddWithValue("guideId", pd.guideId);
+
+
+            //写入强化星级
+            //0#0#0#0#0#0#
+            string strongStr =string.Empty;
+            int[] strong = pd.strongArr;
+            for (int i = 0; i < strong.Length; i++)
+            {
+                strongStr += strong[i];
+                strongStr += "#";
+            }
+            cmd.Parameters.AddWithValue("strong", strongStr);
+            cmd.Parameters.AddWithValue("time", pd.time);
 
             cmd.ExecuteNonQuery();
             id = (int)cmd.LastInsertedId;
@@ -159,7 +208,7 @@ class DBMgr
     }
 
     /// <summary>
-    /// 从数据库查询是否存在该名称
+    /// 查询是否存在
     /// </summary>
     public bool QueryNameData(string name)
     {
@@ -188,14 +237,14 @@ class DBMgr
     }
 
     /// <summary>
-    /// 更新玩家数据
+    /// 更新数据
     /// </summary>
     public bool UpdatePlayerData(int id,PlayerData playerData)
     {
 
         try
         {
-            MySqlCommand cmd = new MySqlCommand("update account set name=@name,level=@level,exp=@exp,power=@power,coin=@coin,diamond=@diamond,hp=@hp,ad=@ad,ap=@ap,addef=@addef,apdef=@apdef,dodge=@dodge,pierce=@pierce,critical=@critical where id = @id", conn);
+            MySqlCommand cmd = new MySqlCommand("update account set name=@name,level=@level,exp=@exp,power=@power,coin=@coin,diamond=@diamond,crystal=@crystal,hp=@hp,ad=@ad,ap=@ap,addef=@addef,apdef=@apdef,dodge=@dodge,pierce=@pierce,critical=@critical,guideId = @guideId,strong =@strong,time =@time where id = @id", conn);
             cmd.Parameters.AddWithValue("id", id);
             cmd.Parameters.AddWithValue("name", playerData.name);
             cmd.Parameters.AddWithValue("level", playerData.lv);
@@ -203,6 +252,7 @@ class DBMgr
             cmd.Parameters.AddWithValue("power", playerData.power);
             cmd.Parameters.AddWithValue("coin", playerData.coin);
             cmd.Parameters.AddWithValue("diamond", playerData.diamond);
+            cmd.Parameters.AddWithValue("crystal", playerData.crystal);
             cmd.Parameters.AddWithValue("hp", playerData.hp);
             cmd.Parameters.AddWithValue("ad", playerData.ad);
             cmd.Parameters.AddWithValue("ap", playerData.ap);
@@ -211,6 +261,19 @@ class DBMgr
             cmd.Parameters.AddWithValue("dodge", playerData.dodge);
             cmd.Parameters.AddWithValue("pierce", playerData.pierce);
             cmd.Parameters.AddWithValue("critical", playerData.critical);
+            cmd.Parameters.AddWithValue("guideId", playerData.guideId);
+
+            //写入强化星级
+            //0#0#0#0#0#0#
+            string strongStr = string.Empty;
+            int[] strong = playerData.strongArr;
+            for (int i = 0; i < strong.Length; i++)
+            {
+                strongStr += strong[i];
+                strongStr += "#";
+            }
+            cmd.Parameters.AddWithValue("strong", strongStr);
+            cmd.Parameters.AddWithValue("time", playerData.time);
 
             cmd.ExecuteNonQuery();
         }

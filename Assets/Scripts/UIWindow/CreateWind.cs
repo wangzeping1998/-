@@ -12,21 +12,21 @@ using UnityEngine.UI;
 
 public class CreateWind : WindowRoot
 {
-	public InputField iptName;
-	public Button rdBtn;
-	public Button enterBtn;
+	public InputField iptName;	//角色名称输入
+	public Button rdBtn;		//随机按钮
+	public Button enterBtn;		//进入游戏按钮
 	protected override void InitWind()
 	{
 		base.InitWind();
 		
-		rdBtn.onClick.AddListener(ClickRandBtn);
-		enterBtn.onClick.AddListener(ClickEnterBtn);
+		rdBtn.onClick.AddListener(OnClickRandBtn);
+		enterBtn.onClick.AddListener(OnClickEnterBtn);
 		//显示一个随机名字
 		iptName.text = resSvc.GetRDNameData(false);
 	}
 	
-	
-	public void ClickRandBtn()
+	//随机名字按钮
+	public void OnClickRandBtn()
 	{
 		audioSvc.PlayUIAudio(Constants.UIClickBtn);
 		string rdName = resSvc.GetRDNameData(false);
@@ -34,9 +34,11 @@ public class CreateWind : WindowRoot
 
 	}
 
-	public void ClickEnterBtn()
+	//进入游戏按钮
+	public void OnClickEnterBtn()
 	{
 		audioSvc.PlayUIAudio(Constants.UIClickBtn);
+		//发送消息给服务器
 		if (!string.IsNullOrEmpty(iptName.text))
 		{
 			GameMsg msg = new GameMsg()

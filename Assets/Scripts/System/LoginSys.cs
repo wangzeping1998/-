@@ -13,8 +13,8 @@ public class LoginSys : SystemRoot
 {
 	public static LoginSys instance;
 	
-	public CreateWind createWind;
-	public LoginWind loginWind;
+	public CreateWind createWind;		//创建角色场景UI
+	public LoginWind loginWind;			//登入场景UI
 
 	public override void InitSys()
 	{
@@ -36,11 +36,13 @@ public class LoginSys : SystemRoot
 		audioSvc.PlayBgMusic(Constants.BGLogin);
 	}
 
+	//打开登入场景UI
 	public void OpenLoginWind()
 	{
 		loginWind.SetWindowState();
 	}
-
+	
+	//服务器回发登入响应
 	public void RspLogin(GameMsg msg)
 	{
 		GameRoot.AddTips("登入成功");
@@ -60,6 +62,7 @@ public class LoginSys : SystemRoot
 		loginWind.SetWindowState(false);
 	}
 
+	//服务器回发角色名称响应
 	public void RspRename(GameMsg msg)
 	{
 		GameRoot.instance.SetPlayerName(msg.rspRename.name);

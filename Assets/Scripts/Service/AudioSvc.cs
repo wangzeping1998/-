@@ -11,14 +11,15 @@ using UnityEngine;
 public class AudioSvc : MonoBehaviour
 {
 	public static AudioSvc instance;
-	public AudioSource bgAudio;
-	public AudioSource uiAudio;
+	public AudioSource bgAudio;			//背景音乐组件
+	public AudioSource uiAudio;			//UI音效组件
 	public void InitSvc()
 	{
 		instance = this;
 		Debug.Log("Init AudioSvc...");
 	}
 
+	//播放背景音乐
 	public void PlayBgMusic(string name, bool isLoop = true)
 	{
 		AudioClip audio = ResSvc.instance.LoadAudio("ResAudio/" + name, true);
@@ -30,6 +31,7 @@ public class AudioSvc : MonoBehaviour
 		}
 	}
 
+	//播放UI音乐
 	public void PlayUIAudio(string name)
 	{
 		AudioClip audio = ResSvc.instance.LoadAudio("ResAudio/" + name, true);

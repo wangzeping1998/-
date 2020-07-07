@@ -21,8 +21,8 @@ public class LoginWind : WindowRoot
 	protected override void InitWind()
 	{
 		base.InitWind();
-		btnEnter.onClick.AddListener(ClickEnterBtn);
-		btnNotice.onClick.AddListener(ClickNoticeBtn);
+		btnEnter.onClick.AddListener(OnClickEnterBtn);
+		btnNotice.onClick.AddListener(OnClickNoticeBtn);
 		
 		//获取本地存储的账号密码
 		if (PlayerPrefs.HasKey("Acct") && PlayerPrefs.HasKey("Pass"))
@@ -39,7 +39,7 @@ public class LoginWind : WindowRoot
 
 
 
-	public void ClickEnterBtn()
+	public void OnClickEnterBtn()
 	{
 		audioSvc.PlayUIAudio(Constants.UILoginBtn);
 		string _acct = iptAcct.text;
@@ -63,11 +63,10 @@ public class LoginWind : WindowRoot
 		{
 			GameRoot.AddTips("账号或密码为空");
 		}
-		//TODO Remove
 
 	}
 
-	public void ClickNoticeBtn()
+	public void OnClickNoticeBtn()
 	{
 		audioSvc.PlayUIAudio(Constants.UIClickBtn);
 		GameRoot.AddTips("功能未开发完成");

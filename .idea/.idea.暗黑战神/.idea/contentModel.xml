@@ -32,8 +32,10 @@
       </e>
       <e p="Assets\Resources" t="Include">
         <e p="ResCfgs" t="Include">
+          <e p="guide.xml" t="Include" />
           <e p="map.xml" t="Include" />
           <e p="rdname.xml" t="Include" />
+          <e p="strong.xml" t="Include" />
         </e>
       </e>
       <e p="Assets\Scripts" t="Include">
@@ -48,6 +50,7 @@
           <e p="WindowRoot.cs" t="Include" />
         </e>
         <e p="GameRoot.cs" t="Include" />
+        <e p="MainCityMap.cs" t="Include" />
         <e p="Net" t="Include">
           <e p="ClientSession.cs" t="Include" />
         </e>
@@ -55,18 +58,25 @@
         <e p="Service" t="Include">
           <e p="AudioSvc.cs" t="Include" />
           <e p="NetSvc.cs" t="Include" />
+          <e p="PETimer.cs" t="Include" />
           <e p="ResSvc.cs" t="Include" />
+          <e p="TimerSvc.cs" t="Include" />
         </e>
         <e p="system" t="Include">
           <e p="LoginSys.cs" t="Include" />
           <e p="MainCitySys.cs" t="Include" />
         </e>
         <e p="UIWindow" t="Include">
+          <e p="BuyWind.cs" t="Include" />
+          <e p="ChatWind.cs" t="Include" />
           <e p="CreateWind.cs" t="Include" />
           <e p="DynamicWind.cs" t="Include" />
+          <e p="GuideWind.cs" t="Include" />
+          <e p="InfoWind.cs" t="Include" />
           <e p="LoadingWind.cs" t="Include" />
           <e p="LoginWind.cs" t="Include" />
           <e p="MainCityWind.cs" t="Include" />
+          <e p="StrongWind.cs" t="Include" />
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />

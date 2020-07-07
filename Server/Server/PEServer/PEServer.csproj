@@ -38,9 +38,17 @@
     <Compile Include="DB\DBMgr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\ServerRoot.cs" />
+    <Compile Include="Service\CfgRvc.cs" />
     <Compile Include="Service\NetSvc\NetSvc.cs" />
+    <Compile Include="Service\NetSvc\PETimer.cs" />
     <Compile Include="Service\NetSvc\ServerSession.cs" />
+    <Compile Include="Service\NetSvc\TimerSvc.cs" />
+    <Compile Include="System\BuySys\BuySys.cs" />
+    <Compile Include="System\Chatsys\ChatSys.cs" />
+    <Compile Include="System\GuideSys\GuideSys.cs" />
     <Compile Include="System\LoginSys\LoginSys.cs" />
+    <Compile Include="System\PowerSys\PowerSys.cs" />
+    <Compile Include="System\StrongSys\StrongSys.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -62,6 +70,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

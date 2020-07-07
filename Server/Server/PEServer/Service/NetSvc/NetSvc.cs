@@ -9,7 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-class MsgPack
+public class MsgPack
 {
     public ServerSession session; 
     public GameMsg msg;
@@ -60,6 +60,7 @@ class NetSvc
         }
     }
 
+
     public void Update()
     {
         if (msgPackQue.Count > 0)
@@ -80,6 +81,14 @@ class NetSvc
             case CMD.ReqLogin: LoginSys.Instance.ReqLogin(pack);
                 break;
             case CMD.ReqRename: LoginSys.Instance.ReqRename(pack);
+                break;
+            case CMD.ReqGuide: GuideSys.Instance.ReqGuide(pack);
+                break;
+            case CMD.ReqStrong: StrongSys.Instance.ReqStrong(pack);
+                break;
+            case CMD.SndChat: ChatSys.Instance.SndChat(pack);
+                break;
+            case CMD.ReqBuy: BuySys.Instance.ReqBuy(pack);
                 break;
             default:
                 break;

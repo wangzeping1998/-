@@ -4,12 +4,15 @@
 	功能：服务器初始化
 *****************************************************/
 
+using System.Threading;
+
 class ServerRoot
 {
     private static ServerRoot instance;
     public static ServerRoot Instance
-   {
-        get {
+    {
+        get
+        {
             if (instance == null)
             {
                 instance = new ServerRoot();
@@ -21,20 +24,33 @@ class ServerRoot
 
     public void Init()
     {
-        //数据层TODO
+        //数据层
         DBMgr.Instance.Init();
         //服务层
         NetSvc.Instance.Init();
-        //系统层级
+        CfgRvc.Instance.Init();
+        TimerSvc.Instance.Init();
+        //系统层
         LoginSys.Instance.Init();
+        GuideSys.Instance.Init();
+        StrongSys.Instance.Init();
+        ChatSys.Instance.Init();
+        BuySys.Instance.Init();
+        PowerSys.Instance.Init();
+
     }
 
     public void Update()
     {
         NetSvc.Instance.Update();
+        TimerSvc.Instance.Update();
     }
 
     public static int SessionID = 0;
+
+    /// <summary>
+    ///获取连接ID 
+    /// </summary>
     public static int GetSessionID()
     {
         if (SessionID == int.MaxValue)

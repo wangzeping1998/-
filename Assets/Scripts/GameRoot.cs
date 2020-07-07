@@ -52,6 +52,8 @@ public class GameRoot : MonoBehaviour
 		net.InitSvc();
 		AudioSvc audio = GetComponent<AudioSvc>();
 		audio.InitSvc();
+		TimerSvc timer = GetComponent<TimerSvc>();
+		timer.InitSvc();
 		
 		//业务系统初始化
 		LoginSys login = GetComponent<LoginSys>();
@@ -77,5 +79,38 @@ public class GameRoot : MonoBehaviour
 	public void SetPlayerName(string name)
 	{
 		this._playerData.name = name;
+	}
+	
+	//完成任务后的处理
+	public void SetPlayerDataByGuide(RspGuide data)
+	{
+		playerData.coin = data.coin;
+		playerData.exp = data.exp;
+		playerData.lv = data.lv;
+		playerData.guideId = data.guideId;
+	}
+
+	public void SetPlayerDataByStrong(RspStrong data)
+	{
+		playerData.coin = data.coin;
+		playerData.crystal = data.crystal;
+		playerData.hp = data.hp;
+		playerData.ad = data.ad;
+		playerData.ap = data.ap;
+		playerData.addef = data.addef;
+		playerData.apdef = data.apdef;
+		playerData.strongArr = data.strongArr;
+	}
+
+	public void SetPlayerDataByBuy(RspBuy data)
+	{
+		playerData.coin = data.coin;
+		playerData.diamond = data.diamond;
+		playerData.power = data.power;
+	}
+
+	public void SetPlayerDataByPower(PshPower pshPower)
+	{
+		playerData.power = pshPower.power;
 	}
 }

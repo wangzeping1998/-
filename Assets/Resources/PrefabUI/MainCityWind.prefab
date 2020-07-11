@@ -2132,6 +2132,8 @@ MonoBehaviour:
   btnChat: {fileID: 114573406657460588}
   btnBuyPower: {fileID: 114116999797921976}
   btnMkCoin: {fileID: 114305156390069500}
+  btnTask: {fileID: 114097443804325628}
+  btnFuben: {fileID: 114883274876395946}
 --- !u!114 &114453595120127202
 MonoBehaviour:
   m_ObjectHideFlags: 1

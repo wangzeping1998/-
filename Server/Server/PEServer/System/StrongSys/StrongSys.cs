@@ -70,6 +70,9 @@ class StrongSys
         }
         else
         {
+            //任务进度数据更新
+            TaskSys.Instance.CalcTaskPrgs(pd, 3);
+
             //满足条件
             //消耗金币和水晶
             pd.coin -= nextSc.coin;

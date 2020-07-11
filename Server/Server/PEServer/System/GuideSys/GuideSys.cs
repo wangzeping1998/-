@@ -53,10 +53,16 @@ class GuideSys
         //校验
         if (pd.guideId == reqGuide.guideId)
         {
+            //检查为智者点播任务
+            if (pd.guideId == 1001)
+            {
+                TaskSys.Instance.CalcTaskPrgs(pd,1);
+            }
+
             //更新玩家数据
             pd.guideId++;
             pd.coin += agc.coin;
-            CalExp(pd, agc.exp);
+            PECommon.CalExp(pd, agc.exp);
 
             if (!cacheSvc.UpdataPlayerData(pd.id,pd))
             {
@@ -84,32 +90,5 @@ class GuideSys
         
     }
 
-    /// <summary>
-    /// 升级逻辑
-    /// </summary>
-    private void CalExp(PlayerData pd,int addExp)
-    {
-        int curtLv = pd.lv;
-        int curtExp = pd.exp;
-        int addRestExp = addExp;
-        while (true)
-        {
-            //计算出当前等级升级需要的经验,处理升级与连续升级问题
-            int upNeedExp = PECommon.GetExpUpValByLv(curtLv) - curtExp;
-            if (addRestExp >= upNeedExp)
-            {
-                //能升级
-                curtLv++;
-                curtExp = 0;
-                addRestExp -= upNeedExp;
-            }
-            else
-            {
-                //不能升级
-                pd.lv = curtLv;
-                pd.exp = curtExp + addRestExp;
-                break;
-            }
-        }
-    }
+    
 }

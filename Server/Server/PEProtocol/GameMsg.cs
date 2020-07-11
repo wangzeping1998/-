@@ -31,6 +31,11 @@ namespace PEProtocol
         public RspBuy rspBuy;
 
         public PshPower pshPower;
+
+        public ReqTaskReward reqTaskReward;
+        public RspTaskReward rspTaskReward;
+
+        public PshTaskPrgs pshTaskPrgs;
     }
 
     #region 登入相关
@@ -72,6 +77,8 @@ namespace PEProtocol
         public int guideId; //任务ID
         public int[] strongArr; //强化部位
         public long time;
+        public string[] taskArr;    //任务奖励系统
+        public int fuben;
     }
 
     [Serializable]
@@ -170,6 +177,33 @@ namespace PEProtocol
 
     #endregion
 
+    #region 任务奖励系统
+
+    [Serializable]
+    public class ReqTaskReward
+    {
+        public int taskId;
+    }
+
+    [Serializable]
+    public class RspTaskReward
+    {
+        public int coin;
+        public int exp;
+        public int lv;
+        public string[] taskArr;
+    }
+
+    #endregion
+
+    #region 推送任务进度
+    [Serializable]
+    public class PshTaskPrgs
+    {
+        public string[] taskArr;
+    }
+    #endregion
+
     /// <summary>
     /// 消息命令
     /// </summary>
@@ -197,8 +231,13 @@ namespace PEProtocol
         //购买
         ReqBuy = 207,
         RspBuy = 208,
-
+        //体力回复
         PshPower = 209,
+
+        ReqTaskReward = 210,
+        RspTaskReward = 211,
+
+        PshTaskPrgs = 212,
     }
 
     /// <summary>
@@ -217,6 +256,7 @@ namespace PEProtocol
         LackCoin,   //缺少金币
         LackDiamond,    //缺少钻石
         LackCrystal,    //缺少强化水晶
+        ClientDataError,    //客户端数据异常
     }
 
     public class ServerCfg

@@ -5,6 +5,7 @@
 *****************************************************/
 using MySql.Data.MySqlClient;
 using PEProtocol;
+using System.Threading.Tasks;
 
 class DBMgr
 {
@@ -77,7 +78,8 @@ class DBMgr
                         critical = reader.GetInt32("critical"),
                         guideId = reader.GetInt32("guideId"),
                         time = reader.GetInt64("time"),
-                    };
+                        fuben = reader.GetInt32("fuben"),
+                };
 
                     #region strong
                     //星级数据结构  10#10#10#10#10#8#
@@ -101,6 +103,27 @@ class DBMgr
                     }
                     playerData.strongArr = _strongArr;
                     #endregion
+
+                    string[] taskStrArr = reader.GetString("task").Split('#');
+                    string[] taskArr = new string[6];
+                    for (int i = 0; i < taskStrArr.Length; i++)
+                    {
+                        if (taskStrArr[i] == string.Empty)
+                        {
+                            continue;
+                        }
+                        else if(taskStrArr[i].Length >= 5)
+                        {
+                            taskArr[i] = taskStrArr[i];
+                        }
+                        else
+                        {
+                            throw new System.Exception("taskArr error!");
+                        }
+                    }
+                    playerData.taskArr = taskArr;
+
+
                 }
             }
             else
@@ -129,8 +152,16 @@ class DBMgr
                         critical = 2,
                         guideId = 1001,
                         strongArr = new int[6],
-                        time = TimerSvc.Instance.GetNowTime()
+                        time = TimerSvc.Instance.GetNowTime(),
+                        taskArr = new string[6],
+                        fuben = 10001,
                     };
+
+                    string[] taskArr = playerData.taskArr;
+                    for (int i = 0; i < taskArr.Length; i++)
+                    { 
+                        taskArr[i] = (i + 1) + "|0|0";
+                    }
                 }
 
                 if (reader != null)
@@ -164,7 +195,7 @@ class DBMgr
         int id = -1;
         try
         {
-            MySqlCommand cmd = new MySqlCommand("insert into account set acct=@acct, pass=@pass, name=@name, level=@level,exp=@exp,power=@power,coin=@coin,diamond=@diamond,crystal=@crystal,hp=@hp,ad=@ad,ap=@ap,addef=@addef,apdef=@apdef,dodge=@dodge,pierce=@pierce,critical=@critical,strong=@strong,guideId = @guideId,time = @time", conn);
+            MySqlCommand cmd = new MySqlCommand("insert into account set acct=@acct, pass=@pass, name=@name, level=@level,exp=@exp,power=@power,coin=@coin,diamond=@diamond,crystal=@crystal,hp=@hp,ad=@ad,ap=@ap,addef=@addef,apdef=@apdef,dodge=@dodge,pierce=@pierce,critical=@critical,strong=@strong,guideId = @guideId,time = @time,task = @task,fuben=@fuben", conn);
             cmd.Parameters.AddWithValue("acct", acct);
             cmd.Parameters.AddWithValue("pass", pass);
             cmd.Parameters.AddWithValue("name", pd.name);
@@ -184,18 +215,35 @@ class DBMgr
             cmd.Parameters.AddWithValue("critical", pd.critical);
             cmd.Parameters.AddWithValue("guideId", pd.guideId);
 
-
+            #region strong
             //写入强化星级
             //0#0#0#0#0#0#
-            string strongStr =string.Empty;
+            string strongStr = string.Empty;
             int[] strong = pd.strongArr;
             for (int i = 0; i < strong.Length; i++)
             {
                 strongStr += strong[i];
                 strongStr += "#";
             }
+
+
             cmd.Parameters.AddWithValue("strong", strongStr);
+            #endregion
+
             cmd.Parameters.AddWithValue("time", pd.time);
+
+            #region Taskreward
+            string[] taskArr = pd.taskArr;
+            string taskStr = string.Empty;
+            for (int i = 0; i < taskArr.Length; i++)
+            {
+                taskStr += taskArr[i] + "#";
+            }
+
+            cmd.Parameters.AddWithValue("task", taskStr);
+            cmd.Parameters.AddWithValue("fuben", pd.fuben);
+            #endregion
+
 
             cmd.ExecuteNonQuery();
             id = (int)cmd.LastInsertedId;
@@ -239,41 +287,52 @@ class DBMgr
     /// <summary>
     /// 更新数据
     /// </summary>
-    public bool UpdatePlayerData(int id,PlayerData playerData)
+    public bool UpdatePlayerData(int id,PlayerData pd)
     {
 
         try
         {
-            MySqlCommand cmd = new MySqlCommand("update account set name=@name,level=@level,exp=@exp,power=@power,coin=@coin,diamond=@diamond,crystal=@crystal,hp=@hp,ad=@ad,ap=@ap,addef=@addef,apdef=@apdef,dodge=@dodge,pierce=@pierce,critical=@critical,guideId = @guideId,strong =@strong,time =@time where id = @id", conn);
+            MySqlCommand cmd = new MySqlCommand("update account set name=@name,level=@level,exp=@exp,power=@power,coin=@coin,diamond=@diamond,crystal=@crystal,hp=@hp,ad=@ad,ap=@ap,addef=@addef,apdef=@apdef,dodge=@dodge,pierce=@pierce,critical=@critical,guideId = @guideId,strong =@strong,time =@time,task =@task,fuben = @fuben where id = @id", conn);
             cmd.Parameters.AddWithValue("id", id);
-            cmd.Parameters.AddWithValue("name", playerData.name);
-            cmd.Parameters.AddWithValue("level", playerData.lv);
-            cmd.Parameters.AddWithValue("exp", playerData.exp);
-            cmd.Parameters.AddWithValue("power", playerData.power);
-            cmd.Parameters.AddWithValue("coin", playerData.coin);
-            cmd.Parameters.AddWithValue("diamond", playerData.diamond);
-            cmd.Parameters.AddWithValue("crystal", playerData.crystal);
-            cmd.Parameters.AddWithValue("hp", playerData.hp);
-            cmd.Parameters.AddWithValue("ad", playerData.ad);
-            cmd.Parameters.AddWithValue("ap", playerData.ap);
-            cmd.Parameters.AddWithValue("addef", playerData.addef);
-            cmd.Parameters.AddWithValue("apdef", playerData.apdef);
-            cmd.Parameters.AddWithValue("dodge", playerData.dodge);
-            cmd.Parameters.AddWithValue("pierce", playerData.pierce);
-            cmd.Parameters.AddWithValue("critical", playerData.critical);
-            cmd.Parameters.AddWithValue("guideId", playerData.guideId);
+            cmd.Parameters.AddWithValue("name", pd.name);
+            cmd.Parameters.AddWithValue("level", pd.lv);
+            cmd.Parameters.AddWithValue("exp", pd.exp);
+            cmd.Parameters.AddWithValue("power", pd.power);
+            cmd.Parameters.AddWithValue("coin", pd.coin);
+            cmd.Parameters.AddWithValue("diamond", pd.diamond);
+            cmd.Parameters.AddWithValue("crystal", pd.crystal);
+            cmd.Parameters.AddWithValue("hp", pd.hp);
+            cmd.Parameters.AddWithValue("ad", pd.ad);
+            cmd.Parameters.AddWithValue("ap", pd.ap);
+            cmd.Parameters.AddWithValue("addef", pd.addef);
+            cmd.Parameters.AddWithValue("apdef", pd.apdef);
+            cmd.Parameters.AddWithValue("dodge", pd.dodge);
+            cmd.Parameters.AddWithValue("pierce", pd.pierce);
+            cmd.Parameters.AddWithValue("critical", pd.critical);
+            cmd.Parameters.AddWithValue("guideId", pd.guideId);
 
             //写入强化星级
             //0#0#0#0#0#0#
             string strongStr = string.Empty;
-            int[] strong = playerData.strongArr;
+            int[] strong = pd.strongArr;
             for (int i = 0; i < strong.Length; i++)
             {
                 strongStr += strong[i];
                 strongStr += "#";
             }
             cmd.Parameters.AddWithValue("strong", strongStr);
-            cmd.Parameters.AddWithValue("time", playerData.time);
+            cmd.Parameters.AddWithValue("time", pd.time);
+
+            #region Taskreward
+            string[] taskArr = pd.taskArr;
+            string taskStr = string.Empty;
+            for (int i = 0; i < taskArr.Length; i++)
+            {
+                taskStr += taskArr[i] + "#";
+            }
+            cmd.Parameters.AddWithValue("task", taskStr);
+            cmd.Parameters.AddWithValue("fuben", pd.fuben);
+            #endregion
 
             cmd.ExecuteNonQuery();
         }

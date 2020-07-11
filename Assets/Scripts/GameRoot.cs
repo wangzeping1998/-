@@ -60,6 +60,8 @@ public class GameRoot : MonoBehaviour
 		login.InitSys();
 		MainCitySys mainCitySys = GetComponent<MainCitySys>();
 		mainCitySys.InitSys();
+		FubenSys fubenSys = GetComponent<FubenSys>();
+		fubenSys.InitSys();
 		//进入登入场景并加载UI
 		login.EnterLogin();
 		
@@ -109,8 +111,21 @@ public class GameRoot : MonoBehaviour
 		playerData.power = data.power;
 	}
 
-	public void SetPlayerDataByPower(PshPower pshPower)
+	public void SetPlayerDataByPower(PshPower data)
 	{
-		playerData.power = pshPower.power;
+		playerData.power = data.power;
+	}
+	
+	public void SetPlayerDataByTask(RspTaskReward data)
+	{
+		playerData.coin = data.coin;
+		playerData.lv = data.lv;
+		playerData.exp = data.exp;
+		playerData.taskArr = data.taskArr;
+	}
+
+	public void SetPlayerDataByTaskPrgs(PshTaskPrgs data)
+	{
+		playerData.taskArr = data.taskArr;
 	}
 }

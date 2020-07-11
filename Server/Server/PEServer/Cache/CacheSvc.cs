@@ -105,4 +105,18 @@ class CacheSvc
     {
         return onLineSessionDic;
     }
+
+    public ServerSession GetOnlineServerSession(int id)
+    {
+        ServerSession session = null;
+        foreach (var item in onLineSessionDic)
+        {
+            if (item.Value.id == id)
+            {
+                session = item.Key;
+                break;
+            }
+        }
+        return session;
+    }
 }

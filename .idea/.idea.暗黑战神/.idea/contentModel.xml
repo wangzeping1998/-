@@ -36,6 +36,7 @@
           <e p="map.xml" t="Include" />
           <e p="rdname.xml" t="Include" />
           <e p="strong.xml" t="Include" />
+          <e p="taskreward.xml" t="Include" />
         </e>
       </e>
       <e p="Assets\Scripts" t="Include">
@@ -63,6 +64,7 @@
           <e p="TimerSvc.cs" t="Include" />
         </e>
         <e p="system" t="Include">
+          <e p="FubenSys.cs" t="Include" />
           <e p="LoginSys.cs" t="Include" />
           <e p="MainCitySys.cs" t="Include" />
         </e>
@@ -71,12 +73,14 @@
           <e p="ChatWind.cs" t="Include" />
           <e p="CreateWind.cs" t="Include" />
           <e p="DynamicWind.cs" t="Include" />
+          <e p="FubenWind.cs" t="Include" />
           <e p="GuideWind.cs" t="Include" />
           <e p="InfoWind.cs" t="Include" />
           <e p="LoadingWind.cs" t="Include" />
           <e p="LoginWind.cs" t="Include" />
           <e p="MainCityWind.cs" t="Include" />
           <e p="StrongWind.cs" t="Include" />
+          <e p="TaskWind.cs" t="Include" />
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />

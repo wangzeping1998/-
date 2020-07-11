@@ -31,7 +31,7 @@ class CfgRvc
         PECommon.Log("CfgRvc Init Done.");
         InitGuideCfg();
 		InitStrongCfg();
-
+		InitTaskRewardCfg();
 	}
 
     #region 引导任务配置
@@ -233,6 +233,63 @@ class CfgRvc
 
 	#endregion
 
+	#region 任务数据配置
+	private Dictionary<int, TaskRewardCfg> TaskDic = new Dictionary<int, TaskRewardCfg>();
+	private void InitTaskRewardCfg()
+	{
+		XmlDocument doc = new XmlDocument();
+		doc.Load(@"D:\GitDirectory\暗黑战神\Assets\Resources\ResCfgs\taskreward.xml");
+		XmlNodeList nodLst = doc.SelectSingleNode("root").ChildNodes;
+
+		for (int i = 0; i < nodLst.Count; i++)
+		{
+			XmlElement ele = nodLst[i] as XmlElement;
+			if (ele.GetAttributeNode("ID") == null)
+			{
+				continue;
+			}
+			int ID = Convert.ToInt32(ele.GetAttributeNode("ID").InnerText);
+
+			TaskRewardCfg trc = new TaskRewardCfg()
+			{
+				id = ID
+			};
+
+			foreach (XmlElement e in nodLst[i].ChildNodes)
+			{
+				switch (e.Name)
+				{
+					case "taskName":
+						trc.taskName = e.InnerText;
+						break;
+					case "coin":
+						trc.coin = int.Parse(e.InnerText);
+						break;
+					case "exp":
+						trc.exp = int.Parse(e.InnerText);
+						break;
+					case "count":
+						trc.count = int.Parse(e.InnerText);
+						break;
+				}
+			}
+			TaskDic.Add(ID, trc);
+		}
+	}
+
+	public TaskRewardCfg GetTaskRewardCfgData(int id)
+	{
+		TaskRewardCfg data;
+		if (TaskDic.TryGetValue(id, out data))
+		{
+			return data;
+		}
+
+		return null;
+	}
+	#endregion
+
+
 }
 
 #region 数据结构
@@ -267,5 +324,26 @@ public class StrongCfg : BaseData<StrongCfg>
 	public int minlv;              //最小等级
 	public int coin;               //消耗金币
 	public int crystal;            //消耗材料
+}
+
+/// <summary>
+/// 任务奖励模板配置
+/// 任务名字、任务数量、经验奖励、金币奖励
+/// </summary>
+public class TaskRewardCfg : BaseData<TaskRewardCfg>
+{
+	public string taskName;
+	public int count;
+	public int exp;
+	public int coin;
+}
+/// <summary>
+/// 任务奖励数据配置
+/// 任务ID、任务完成进度、是否领取奖励
+/// </summary>
+public class TaskRewardData : BaseData<TaskRewardData>
+{
+	public int prgs;
+	public bool taked;
 }
 #endregion

@@ -3,7 +3,7 @@
 	作者：wangz
     邮箱: wangzeping1998@gmail.com
     日期：2020/7/3 15:34:30
-	功能：Nothing
+	功能：聊天窗口
 *****************************************************/
 
 using System.Collections.Generic;

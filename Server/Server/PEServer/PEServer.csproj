@@ -49,6 +49,7 @@
     <Compile Include="System\LoginSys\LoginSys.cs" />
     <Compile Include="System\PowerSys\PowerSys.cs" />
     <Compile Include="System\StrongSys\StrongSys.cs" />
+    <Compile Include="System\TaskSys\TaskSys.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -75,5 +76,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

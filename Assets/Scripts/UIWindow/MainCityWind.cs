@@ -38,6 +38,8 @@ public class MainCityWind : WindowRoot
     public Button btnChat;    //聊天按钮
     public Button btnBuyPower;    //购买体力按钮
     public Button btnMkCoin;
+    public Button btnTask;
+    public Button btnFuben;
     
     protected override void InitWind()
     {
@@ -50,6 +52,8 @@ public class MainCityWind : WindowRoot
         btnChat.onClick.AddListener(OnClickChatBtn);
         btnBuyPower.onClick.AddListener(OnClickBuyPowerBtn);
         btnMkCoin.onClick.AddListener(OnClickMkCoinBtn);
+        btnTask.onClick.AddListener(OnClickTaskBtn);
+        btnFuben.onClick.AddListener(OnClickFubenBtn);
         
         //注册点击事件
         RegisterTouchEvts();
@@ -71,6 +75,8 @@ public class MainCityWind : WindowRoot
         btnGuide.onClick.RemoveListener(OnClickGuideBtn);
         btnStrong.onClick.RemoveListener(OnClickStrongBtn);
         btnChat.onClick.RemoveListener(OnClickChatBtn);
+        btnTask.onClick.RemoveListener(OnClickTaskBtn);
+        btnFuben.onClick.RemoveListener(OnClickFubenBtn);
     }
 
     //刷新UI信息
@@ -207,6 +213,14 @@ public class MainCityWind : WindowRoot
         MainCitySys.instance.OpenBuyWind(0);
     }
     
+    //点击打开副本按钮
+    private void OnClickFubenBtn()
+    {
+        audioSvc.PlayUIAudio(Constants.UIClickBtn);
+        MainCitySys.instance.EnterFuben();
+    }
+
+    
 
     #endregion
     
@@ -258,6 +272,13 @@ public class MainCityWind : WindowRoot
     {
         audioSvc.PlayUIAudio(Constants.UIClickBtn);
         MainCitySys.instance.OpenChatWind();
+    }
+    
+    //点击打开任务窗口按钮
+    private void OnClickTaskBtn()
+    {
+        audioSvc.PlayUIAudio(Constants.UIClickBtn);
+        MainCitySys.instance.OpenTaskWind();
     }
 
 }

@@ -108,6 +108,16 @@ public class WindowRoot : MonoBehaviour
 		SetText(trans.GetComponent<Text>(),context);
 	}
 
+	protected Transform GetTrans(Transform trans, string path)
+	{
+		if (trans!= null)
+		{
+			return trans.Find(path);
+		}
+
+		return transform.Find(path);
+	}
+
 	#endregion
 
 

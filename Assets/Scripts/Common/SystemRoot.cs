@@ -13,11 +13,13 @@ public class SystemRoot : MonoBehaviour
 	protected ResSvc resSvc;
 	protected AudioSvc audioSvc;
 	protected NetSvc netSvc;
-
+	protected TimerSvc timerSvc;
+	
 	public virtual void InitSys()
 	{
 		resSvc = ResSvc.instance;
 		audioSvc = AudioSvc.instance;
 		netSvc = NetSvc.instance;
+		timerSvc = TimerSvc.instance;
 	}
 }

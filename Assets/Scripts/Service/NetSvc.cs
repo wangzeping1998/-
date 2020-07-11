@@ -135,6 +135,9 @@ public class NetSvc : MonoBehaviour
 				case ErrorCode.LackCrystal:
 					GameRoot.AddTips("水晶不足");
 					break;
+				case ErrorCode.ClientDataError:
+					GameRoot.AddTips("客户端数据错误");
+					break;
 			}
 
 			switch (cmd)
@@ -165,7 +168,10 @@ public class NetSvc : MonoBehaviour
 				break;
 			case CMD.PshPower: MainCitySys.instance.PshPower(msg);
 				break;
-					
+			case CMD.RspTaskReward: MainCitySys.instance.RspTakeTaskReward(msg);
+				break;
+			case CMD.PshTaskPrgs: MainCitySys.instance.PshTaskPrgs(msg);
+				break;	
 			default:
 				break;
 		}

@@ -48,6 +48,34 @@ public class PECommon
         return 100 * lv * lv;
     }
 
+    /// <summary>
+    /// 升级逻辑
+    /// </summary>
+    public static void CalExp(PlayerData pd, int addExp)
+    {
+        int curtLv = pd.lv;
+        int curtExp = pd.exp;
+        int addRestExp = addExp;
+        while (true)
+        {
+            //计算出当前等级升级需要的经验,处理升级与连续升级问题
+            int upNeedExp = PECommon.GetExpUpValByLv(curtLv) - curtExp;
+            if (addRestExp >= upNeedExp)
+            {
+                //能升级
+                curtLv++;
+                curtExp = 0;
+                addRestExp -= upNeedExp;
+            }
+            else
+            {
+                //不能升级
+                pd.lv = curtLv;
+                pd.exp = curtExp + addRestExp;
+                break;
+            }
+        }
+    }
 
     public const int PowerAddSpace = 5;    //体力增加间隔
     public const int PowerAddCount = 2;    //每次增加体力值

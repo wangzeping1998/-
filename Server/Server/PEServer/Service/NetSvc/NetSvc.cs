@@ -90,6 +90,8 @@ class NetSvc
                 break;
             case CMD.ReqBuy: BuySys.Instance.ReqBuy(pack);
                 break;
+            case CMD.ReqTaskReward:TaskSys.Instance.ReqTaskReward(pack);
+                break;
             default:
                 break;
         }

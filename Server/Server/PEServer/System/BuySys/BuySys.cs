@@ -53,10 +53,14 @@ public class BuySys
                 case 0:
                     //购买体力
                     pd.power += 100;
+                    //更新任务进度
+                    TaskSys.Instance.CalcTaskPrgs(pd, 4);
                     break;
                 case 1:
                     //购买金币
                     pd.coin += 1000;
+                    //更新任务进度
+                    TaskSys.Instance.CalcTaskPrgs(pd, 5);
                     break;
             }
 

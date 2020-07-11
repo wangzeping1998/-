@@ -53,3 +53,18 @@ public class StrongCfg : BaseData<StrongCfg>
     public int coin;               //消耗金币
     public int crystal;            //消耗材料
 }
+
+//任务奖励配置
+public class TaskRewardCfg : BaseData<TaskRewardCfg>
+{
+    public string taskName;
+    public int count;
+    public int exp;
+    public int coin;
+}
+//任务奖励数据配置
+public class TaskRewardData : BaseData<TaskRewardData>
+{
+    public int prgs;
+    public bool taked;
+}

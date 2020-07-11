@@ -23,6 +23,7 @@ public class MainCitySys : SystemRoot
     public StrongWind strongWind;        //强化窗口
     public ChatWind chatWind;            //聊天窗口
     public BuyWind buyWind;              //购买窗口
+    public TaskWind taskWind;
     
     //数据
     private PlayerController m_playerCtrl;    //玩家角色信息
@@ -99,6 +100,7 @@ public class MainCitySys : SystemRoot
     //打开信息窗口
     public void OpenInfoWind()
     {
+        StopNavGuide();
         //找到UI角色相机
         if (m_charShowCam == null)
         {
@@ -126,12 +128,14 @@ public class MainCitySys : SystemRoot
     public void OpenStrongWind()
     {
         strongWind.SetWindowState();
+        StopNavGuide();
     }
 
     //打开聊天窗口
     public void OpenChatWind()
     {
         chatWind.SetWindowState();
+        StopNavGuide();
     }
     
     //打开购买窗口
@@ -139,7 +143,21 @@ public class MainCitySys : SystemRoot
     {
         buyWind.SetBuyType(type);
         buyWind.SetWindowState();
+        StopNavGuide();
     }
+
+    public void OpenTaskWind()
+    {
+        taskWind.SetWindowState();
+        StopNavGuide();
+    }
+
+    public void EnterFuben()
+    {
+        FubenSys.instance.EnterFuben();
+        StopNavGuide();
+    }
+    
     //关闭角色信息面板
     public void CloseInfoWind()
     {
@@ -247,30 +265,35 @@ public class MainCitySys : SystemRoot
     {
         RspGuide rspGuie = msg.rspGuide;
         GameRoot.AddTips("任务完成奖励金币+"+m_currTaskData.coin + "经验值+"+m_currTaskData.exp);
-        switch (m_currTaskData.id)
+        switch (m_currTaskData.actID)
         {
             case 0:
                 //与智者对话
                 break;
             
             case 1:
+                EnterFuben();
                 //进入副本
                 break;
             
             case 2:
+                OpenStrongWind();
                 //进入强化界面
                 break;
             
             case 3:
+                OpenBuyWind(0);
                 //进入体力购买
                 break;
             
             case 4:
                 //进入金币制造
+                OpenBuyWind(1);
                 break;
             
             case 5:
                 //进入世界聊天
+                OpenChatWind();
                 break;
         }
         
@@ -314,6 +337,22 @@ public class MainCitySys : SystemRoot
     {
         PshPower pshPower = msg.pshPower;
         GameRoot.instance.SetPlayerDataByPower(pshPower);
+        maincityWind.RefreshUI();
+    }
+
+    public void RspTakeTaskReward(GameMsg msg)
+    {
+        RspTaskReward data = msg.rspTaskReward;
+        GameRoot.instance.SetPlayerDataByTask(data);
+        taskWind.Refresh();
+        maincityWind.RefreshUI();
+    }
+
+    public void PshTaskPrgs(GameMsg msg)
+    {
+        PshTaskPrgs data = msg.pshTaskPrgs;
+        GameRoot.instance.SetPlayerDataByTaskPrgs(data);
+        taskWind.Refresh();
         maincityWind.RefreshUI();
     }
 }

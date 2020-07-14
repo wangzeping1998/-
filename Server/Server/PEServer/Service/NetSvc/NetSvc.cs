@@ -92,6 +92,8 @@ class NetSvc
                 break;
             case CMD.ReqTaskReward:TaskSys.Instance.ReqTaskReward(pack);
                 break;
+            case CMD.ReqFBFight:FubenSys.Instance.ReqFBFight(pack);
+                break;
             default:
                 break;
         }

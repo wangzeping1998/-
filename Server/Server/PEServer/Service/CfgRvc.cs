@@ -32,6 +32,7 @@ class CfgRvc
         InitGuideCfg();
 		InitStrongCfg();
 		InitTaskRewardCfg();
+		InitMapCfg();
 	}
 
     #region 引导任务配置
@@ -289,7 +290,64 @@ class CfgRvc
 	}
 	#endregion
 
+	#region 地图配置
 
+	private Dictionary<int, MapCfg> mapDic = new Dictionary<int, MapCfg>();
+
+	private void InitMapCfg()
+	{
+		XmlDocument doc = new XmlDocument();
+		doc.Load(@"D:\GitDirectory\暗黑战神\Assets\Resources\ResCfgs\map.xml");
+		XmlNodeList nodLst = doc.SelectSingleNode("root").ChildNodes;
+
+		for (int i = 0; i < nodLst.Count; i++)
+		{
+			XmlElement ele = nodLst[i] as XmlElement;
+			if (ele.GetAttributeNode("ID") == null)
+			{
+				continue;
+			}
+
+			int ID = Convert.ToInt32(ele.GetAttributeNode("ID").InnerText);
+
+			MapCfg mc = new MapCfg()
+			{
+				id = ID
+			};
+
+			foreach (XmlElement e in nodLst[i].ChildNodes)
+			{
+				switch (e.Name)
+				{
+					case "mapName":
+						mc.mapName = e.InnerText;
+						break;
+					case "sceneName":
+						mc.sceneName = e.InnerText;
+						break;
+					case "power":
+						mc.power = int.Parse(e.InnerText);
+						break;
+				}
+
+			}
+
+			mapDic.Add(ID, mc);
+		}
+	}
+
+	public MapCfg GetMapCfgData(int id)
+	{
+		MapCfg data;
+		if (mapDic.TryGetValue(id, out data))
+		{
+			return data;
+		}
+
+		return null;
+	}
+
+	#endregion
 }
 
 #region 数据结构
@@ -345,5 +403,15 @@ public class TaskRewardData : BaseData<TaskRewardData>
 {
 	public int prgs;
 	public bool taked;
+}
+
+/// <summary>
+/// 地图配置数据结构类
+/// </summary>
+public class MapCfg : BaseData<MapCfg>
+{
+	public string mapName;           //地图名称 
+	public string sceneName;         //场景名称
+	public int power;                //进入地图消耗的体力
 }
 #endregion

@@ -40,6 +40,24 @@
         </e>
       </e>
       <e p="Assets\Scripts" t="Include">
+        <e p="Battle" t="Include">
+          <e p="BattleMgr.cs" t="Include" />
+          <e p="Controller" t="Include">
+            <e p="Controller.cs" t="Include" />
+          </e>
+          <e p="Entity" t="Include">
+            <e p="EntityBase.cs" t="Include" />
+            <e p="EntityPlayer.cs" t="Include" />
+          </e>
+          <e p="FSM" t="Include">
+            <e p="IState.cs" t="Include" />
+            <e p="StateIdle.cs" t="Include" />
+            <e p="StateMove.cs" t="Include" />
+          </e>
+          <e p="MapMgr.cs" t="Include" />
+          <e p="SkillMgr.cs" t="Include" />
+          <e p="StateMgr.cs" t="Include" />
+        </e>
         <e p="Common" t="Include">
           <e p="BaseData.cs" t="Include" />
           <e p="Constants.cs" t="Include" />
@@ -64,6 +82,7 @@
           <e p="TimerSvc.cs" t="Include" />
         </e>
         <e p="system" t="Include">
+          <e p="BattleSys.cs" t="Include" />
           <e p="FubenSys.cs" t="Include" />
           <e p="LoginSys.cs" t="Include" />
           <e p="MainCitySys.cs" t="Include" />
@@ -79,6 +98,7 @@
           <e p="LoadingWind.cs" t="Include" />
           <e p="LoginWind.cs" t="Include" />
           <e p="MainCityWind.cs" t="Include" />
+          <e p="PlayerCtrlWind.cs" t="Include" />
           <e p="StrongWind.cs" t="Include" />
           <e p="TaskWind.cs" t="Include" />
         </e>

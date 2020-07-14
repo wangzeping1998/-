@@ -44,6 +44,7 @@ public class ResSvc : MonoBehaviour
             {
                 if (loaded != null)
                 {
+                    GC.Collect();
                     loaded.Invoke();
                 }
 

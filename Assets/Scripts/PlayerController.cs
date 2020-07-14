@@ -3,13 +3,13 @@
 	作者：wangz
     邮箱: wangzeping1998@gmail.com
     日期：2020/6/17 11:20:0
-	功能：角色控制器
+	功能：表现实体角色控制器
 *****************************************************/
 
 using System;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Controller
 {
     private Transform m_camTrans;
     private Vector3 m_camOffset;
@@ -48,26 +48,25 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        /*
         #region Input
 
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
-        Vector2 _dir = new Vector2(h, v).normalized;
-
-        if (_dir != Vector2.zero)
-        {
-            this.Dir = _dir;
-            SetBlend(Constants.BlendWalk);
-        }
-        else
-        {
-            this.Dir = Vector2.zero;
-            SetBlend(Constants.BlendIdle);
-        }
+//        float h = Input.GetAxis("Horizontal");
+//        float v = Input.GetAxis("Vertical");
+//        Vector2 _dir = new Vector2(h, v).normalized;
+//
+//        if (_dir != Vector2.zero)
+//        {
+//            this.Dir = _dir;
+//            SetBlend(Constants.BlendWalk);
+//        }
+//        else
+//        {
+//            this.Dir = Vector2.zero;
+//            SetBlend(Constants.BlendIdle);
+//        }
 
         #endregion
-        */
+
         if ( m_currentBlend!= m_targetBlend )
         {
             UpdateMixBlend();

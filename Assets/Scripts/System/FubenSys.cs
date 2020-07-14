@@ -6,6 +6,7 @@
 	功能：副本系统
 *****************************************************/
 
+using PEProtocol;
 using UnityEngine;
 
 public class FubenSys : SystemRoot
@@ -33,4 +34,12 @@ public class FubenSys : SystemRoot
 
 	#endregion
 
+	public void RspFBFight(GameMsg msg)
+	{
+		RspFBFight data = msg.rspFBFight;
+		GameRoot.instance.SetPlayerDataByFuben(data);
+		MainCitySys.instance.maincityWind.SetWindowState(false);
+		fubenWind.SetWindowState(false);
+		BattleSys.instance.StartBattle(data.id);
+	}
 }

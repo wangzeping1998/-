@@ -30,15 +30,19 @@ public class FubenWind : WindowRoot
 		int fbId = m_pd.fuben;
 		for (int i = 0; i < btnFubens.Length; i++)
 		{
-			if (i<(fbId % 10000))
+			if (i < (fbId % 10000))
 			{
 				SetActive(btnFubens[i].transform);
-				if (i == fbId % 10000 - 1)
+				int fubenId = i + 10001;
+				btnFubens[i].onClick.AddListener(()=>OnClickFubenBtn(fubenId));
+				//设置提示位置
+				if (i == (fbId % 10000 - 1))
 				{
 					pointerTrans.SetParent(btnFubens[i].transform);
 					pointerTrans.localPosition = new Vector2(30,120);
 					
 				}
+
 			}
 			else
 			{
@@ -47,10 +51,37 @@ public class FubenWind : WindowRoot
 		}
 	}
 
+	private void OnClickFubenBtn(int id)
+	{
+		//id 10001
+		//验证
+		audioSvc.PlayUIAudio(Constants.UIClickBtn);
+		MapCfg mc = resSvc.GetMapCfgData(id);
+		if (m_pd.power < mc.power)
+		{
+			GameRoot.AddTips("体力值不足!");
+			return;
+		}
+
+		GameMsg msg = new GameMsg()
+		{
+			cmd = (int) CMD.ReqFBFight,
+			reqFBFight = new ReqFBFight()
+			{
+				id = id
+			}
+		};
+		netSvc.SendMsg(msg);
+	}
+
 	protected override void ClearWind()
 	{
 		base.ClearWind();
 		btnClose.onClick.RemoveListener(OnClickCloseBtn);
+		for (int i = 0; i < btnFubens.Length; i++)
+		{
+			btnFubens[i].onClick.RemoveAllListeners();
+		}
 	}
 	
 	

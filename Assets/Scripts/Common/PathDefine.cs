@@ -23,6 +23,7 @@ public class PathDefine
     #region Player
 
     public const string AssassinCityPlayerPrefab = "PrefabPlayer/AssassinCity"; //角色预制体路径
+    public const string AssassinBattlePlayerPrefab = "PrefabPlayer/AssassinBattle"; //角色预制体路径
 
     #endregion
 

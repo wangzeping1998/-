@@ -36,6 +36,9 @@ namespace PEProtocol
         public RspTaskReward rspTaskReward;
 
         public PshTaskPrgs pshTaskPrgs;
+
+        public ReqFBFight reqFBFight;
+        public RspFBFight rspFBFight;
     }
 
     #region 登入相关
@@ -204,6 +207,22 @@ namespace PEProtocol
     }
     #endregion
 
+    #region 副本战斗
+    [Serializable]
+    public class ReqFBFight
+    {
+        public int id;
+    }
+
+    [Serializable]
+    public class RspFBFight
+    {
+        public int id;
+        public int power;
+    }
+
+    #endregion
+
     /// <summary>
     /// 消息命令
     /// </summary>
@@ -233,11 +252,14 @@ namespace PEProtocol
         RspBuy = 208,
         //体力回复
         PshPower = 209,
-
+        //任务奖励
         ReqTaskReward = 210,
         RspTaskReward = 211,
-
+        //任务进度推送
         PshTaskPrgs = 212,
+        //副本战斗
+        ReqFBFight= 301,
+        RspFBFight = 302,
     }
 
     /// <summary>
@@ -256,6 +278,7 @@ namespace PEProtocol
         LackCoin,   //缺少金币
         LackDiamond,    //缺少钻石
         LackCrystal,    //缺少强化水晶
+        LackPower,  //体力不足
         ClientDataError,    //客户端数据异常
     }
 

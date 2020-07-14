@@ -18,6 +18,9 @@ public class Constants
 	//音效
 	public const string BGLogin = "bgLogin";		//登入背景音乐
 	public const string BGMainCity = "bgMainCity";	//主城背景音乐
+	public const string BGHuangye = "bgHuangYe";	//主城背景音乐
+	
+	
 	public const string UILoginBtn = "uiLoginBtn";	//登入按钮音效
 	public const string UIClickBtn = "uiClickBtn";	//常规UI点击音效
 	public const string UIExtenBtn = "uiExtenBtn";

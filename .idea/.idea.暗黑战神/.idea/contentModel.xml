@@ -35,6 +35,8 @@
           <e p="guide.xml" t="Include" />
           <e p="map.xml" t="Include" />
           <e p="rdname.xml" t="Include" />
+          <e p="skill.xml" t="Include" />
+          <e p="skillmove.xml" t="Include" />
           <e p="strong.xml" t="Include" />
           <e p="taskreward.xml" t="Include" />
         </e>
@@ -51,6 +53,7 @@
           </e>
           <e p="FSM" t="Include">
             <e p="IState.cs" t="Include" />
+            <e p="StateAttack.cs" t="Include" />
             <e p="StateIdle.cs" t="Include" />
             <e p="StateMove.cs" t="Include" />
           </e>

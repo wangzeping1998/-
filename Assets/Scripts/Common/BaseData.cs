@@ -6,6 +6,7 @@
 	功能：配置表数据结构
 *****************************************************/
 
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BaseData<T>
@@ -67,4 +68,21 @@ public class TaskRewardData : BaseData<TaskRewardData>
 {
     public int prgs;
     public bool taked;
+}
+
+//技能配置
+public class SkillCfg : BaseData<SkillCfg>
+{
+    public string skillName;
+    public long skillTime;
+    public int aniAction;
+    public string fx;
+    public List<int> skillMoveLst;
+}
+
+public class SkillMoveCfg : BaseData<SkillMoveCfg>
+{
+    public long moveTime;
+    public float moveDis;
+    public long delayTime;
 }

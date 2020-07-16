@@ -15,8 +15,7 @@ using UnityEngine.SceneManagement;
 public class ResSvc : MonoBehaviour
 {
     public static ResSvc instance = null;
-    private Action prgCb = null; //加载完成场景回调
-
+    
     public void InitSvc()
     {
         instance = this;
@@ -25,8 +24,15 @@ public class ResSvc : MonoBehaviour
         InitGuideCfg(PathDefine.GuideCfg);
         InitStrongCfg(PathDefine.StrongCfg);
         IniTaskrewardCfg(PathDefine.TaskRewardCfg);
+        IniSkillCfg(PathDefine.SkillCfg);
+        IniSkillMoveCfg(PathDefine.SkillMoveCfg);
+
         Debug.Log("Init ResSvc...");
     }
+
+    #region 加载场景
+
+    private Action prgCb = null; //加载完成场景回调
 
     //异步加载场景，完成后回调
     public void AsyncLoadScene(string sceneName, Action loaded)
@@ -67,6 +73,10 @@ public class ResSvc : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region 加载音频
+
     //音频缓存
     private Dictionary<string, AudioClip> adDic = new Dictionary<string, AudioClip>();
 
@@ -85,6 +95,10 @@ public class ResSvc : MonoBehaviour
 
         return au;
     }
+
+    #endregion
+
+    #region 加载游戏对象
 
     //游戏对象缓存
     private Dictionary<string, GameObject> goDic = new Dictionary<string, GameObject>();
@@ -111,6 +125,10 @@ public class ResSvc : MonoBehaviour
         return go;
     }
 
+    #endregion
+
+    #region 加载精灵
+
     //精灵缓存
     private Dictionary<string, Sprite> spDic = new Dictionary<string, Sprite>();
 
@@ -130,6 +148,8 @@ public class ResSvc : MonoBehaviour
         return sp;
     }
 
+    #endregion
+    
     #region InitCfgs
 
     /*配置表数据与逻辑*/
@@ -483,7 +503,6 @@ public class ResSvc : MonoBehaviour
         int val = 0;
         if (strongCfg.TryGetValue(pos, out posDic))
         {
-
             for (int i = 1; i <= starLv; i++)
             {
                 StrongCfg sc = null;
@@ -514,7 +533,7 @@ public class ResSvc : MonoBehaviour
     }
 
     #endregion
-    
+
     #region 任务奖励配置
 
     private Dictionary<int, TaskRewardCfg> taskrewardDic = new Dictionary<int, TaskRewardCfg>();
@@ -581,6 +600,156 @@ public class ResSvc : MonoBehaviour
 
         return null;
     }
+
+    #endregion
+
+    #region 技能配置
+
+    private Dictionary<int, SkillCfg> skillDic = new Dictionary<int, SkillCfg>();
+
+    private void IniSkillCfg(string path)
+    {
+        TextAsset xml = Resources.Load<TextAsset>(path);
+        if (!xml)
+        {
+            Debug.LogError("xml file " + path + "not exist");
+        }
+        else
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(xml.text);
+            XmlNodeList nodLst = doc.SelectSingleNode("root").ChildNodes;
+
+            for (int i = 0; i < nodLst.Count; i++)
+            {
+                XmlElement ele = nodLst[i] as XmlElement;
+                if (ele.GetAttributeNode("ID") == null)
+                {
+                    continue;
+                }
+
+                int ID = Convert.ToInt32(ele.GetAttributeNode("ID").InnerText);
+
+                SkillCfg sc = new SkillCfg()
+                {
+                    id = ID,
+                    skillMoveLst = new List<int>()
+                };
+
+                foreach (XmlElement e in nodLst[i].ChildNodes)
+                {
+                    switch (e.Name)
+                    {
+                        case "skillName":
+                            sc.skillName = e.InnerText;
+                            break;
+                        case "skillTime":
+                            sc.skillTime = long.Parse(e.InnerText);
+                            break;
+                        case "aniAction":
+                            sc.aniAction = int.Parse(e.InnerText);
+                            break;
+                        case "fx":
+                            sc.fx = e.InnerText;
+                            break;
+                        case "skillMoveLst":
+                            string[] strArr  = e.InnerText.Split('|');
+                            for (int j = 0; j < strArr.Length; j++)
+                            {
+                                if (!string.IsNullOrEmpty(strArr[j]))
+                                {
+                                    sc.skillMoveLst.Add(int.Parse(strArr[i]));
+                                }
+                            }
+                            break;
+                    }
+                }
+
+                skillDic.Add(ID, sc);
+            }
+        }
+    }
+
+    public SkillCfg GetSkillCfg(int id)
+    {
+        SkillCfg data;
+        if (skillDic.TryGetValue(id, out data))
+        {
+            return data;
+        }
+
+        return null;
+    }
+
+    #endregion
+
+    #region 技能位移配置
+
+    private Dictionary<int, SkillMoveCfg> skillMoveDic = new Dictionary<int, SkillMoveCfg>();
+
+    private void IniSkillMoveCfg(string path)
+    {
+        TextAsset xml = Resources.Load<TextAsset>(path);
+        if (!xml)
+        {
+            Debug.LogError("xml file " + path + "not exist");
+        }
+        else
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(xml.text);
+            XmlNodeList nodLst = doc.SelectSingleNode("root").ChildNodes;
+
+            for (int i = 0; i < nodLst.Count; i++)
+            {
+                XmlElement ele = nodLst[i] as XmlElement;
+                if (ele.GetAttributeNode("ID") == null)
+                {
+                    continue;
+                }
+
+                int ID = Convert.ToInt32(ele.GetAttributeNode("ID").InnerText);
+
+                SkillMoveCfg smc = new SkillMoveCfg()
+                {
+                    id = ID
+                };
+
+                foreach (XmlElement e in nodLst[i].ChildNodes)
+                {
+                    switch (e.Name)
+                    {
+                        case "delayTime":
+                            smc.delayTime = long.Parse( e.InnerText);
+                            break;
+                        case "moveTime":
+                            smc.moveTime =long.Parse(e.InnerText) ;
+                            break;
+                        case "moveDis":
+                            smc.moveDis = float.Parse( e.InnerText);
+                            break;
+
+                        
+                    }
+                }
+
+                skillMoveDic.Add(ID, smc);
+            }
+        }
+    }
+
+    public SkillMoveCfg GetSkillMoveCfg(int id)
+    {
+        SkillMoveCfg data;
+        if (skillMoveDic.TryGetValue(id, out data))
+        {
+            return data;
+        }
+
+        return null;
+    }
+
+    
 
     #endregion
 

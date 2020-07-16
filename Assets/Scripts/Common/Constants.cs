@@ -39,9 +39,16 @@ public class Constants
 	public const int MonsterMoveSpeed = 4;
 	
 	public const float AccelerSpeed = 5;
+
+	//技能ID
+	public const int AttackSkillID = 101;
+
+
 	//混合动画参数
 	public const int BlendIdle = 0;
 	public const int BlendWalk = 1;
+	public const int AttackAct = 1;
+	public const int NormalAct= -1;
 
 	//AudoGuideNpc
 	public const int NPCGuide = -1;

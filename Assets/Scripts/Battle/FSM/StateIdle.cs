@@ -10,18 +10,28 @@ using UnityEngine;
 
 public class StateIdle : IState 
 {
-	public void Enter(EntityBase entity)
+	public void Enter(EntityBase entity,params object[] objs)
 	{
 		entity.currentAnimState = AniState.Idle;
+		entity.SetDir(Vector2.zero);
 		PECommon.Log("Enter idle state.");
 	}
 
-	public void Process(EntityBase entity)
+	public void Process(EntityBase entity,params object[] objs)
 	{
-		PECommon.Log("Process idle state.");
+		if (entity.GetMoveDir()!=Vector2.zero)
+		{
+			entity.Move();
+			entity.SetDir(entity.GetMoveDir());
+		}
+		else
+		{
+			entity.SetBlend(0);
+		}
+;			PECommon.Log("Process idle state.");
 	}
 
-	public void Exit(EntityBase entity)
+	public void Exit(EntityBase entity,params object[] objs)
 	{
 		PECommon.Log("Exit idle state.");
 	}

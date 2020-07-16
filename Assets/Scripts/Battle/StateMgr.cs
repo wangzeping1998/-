@@ -18,10 +18,11 @@ public class StateMgr : MonoBehaviour
 		PECommon.Log("StateMgr init done.");
 		fsm.Add(AniState.Idle,new StateIdle());
 		fsm.Add(AniState.Move,new StateMove());
+		fsm.Add(AniState.Attack,new StateAttack());
 	}
 
 	//切换状态
-	public void ChangeStatus(EntityBase entity,AniState targetState)
+	public void ChangeStatus(EntityBase entity,AniState targetState,params object[] objs)
 	{
 		if (entity.currentAnimState == targetState)
 		{
@@ -32,10 +33,10 @@ public class StateMgr : MonoBehaviour
 		{
 			if (entity.currentAnimState != AniState.None)
 			{
-				fsm[entity.currentAnimState].Exit(entity);
+				fsm[entity.currentAnimState].Exit(entity,objs);
 			}
-			fsm[targetState].Enter(entity);
-			fsm[targetState].Process(entity);
+			fsm[targetState].Enter(entity,objs);
+			fsm[targetState].Process(entity,objs);
 
 		}
 	}

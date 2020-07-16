@@ -13,37 +13,24 @@ public class PlayerController : Controller
 {
     private Transform m_camTrans;
     private Vector3 m_camOffset;
-    public Animator anim;
+
     public CharacterController ctrl;
-
-    private bool isMove = false;
-    private Vector2 _dir = Vector2.zero;
-
-    public Vector2 Dir
-    {
-        get { return _dir; }
-        set
-        {
-            if (value == Vector2.zero)
-            {
-                isMove = false;
-            }
-            else
-            {
-                isMove = true;
-            }
-
-            _dir = value;
-        }
-    }
-
+    
     private float m_targetBlend;
-    private float m_currentBlend;
+    private float m_currentBlend;	
+    
+    public GameObject daggeratk1fx;
 
     public void Init()
     {
+        base.Init();
         m_camTrans = Camera.main.transform;
         m_camOffset = transform.position - m_camTrans.position;
+
+        if (daggeratk1fx!= null)
+        {
+            base.fxDic.Add(daggeratk1fx.name,daggeratk1fx);
+        }
     }
 
     private void Update()
@@ -71,9 +58,9 @@ public class PlayerController : Controller
         {
             UpdateMixBlend();
         }
-
-
-        if (isMove)
+        
+        //普通移动
+        if (isMove && !isSkillMove)
         {
             //设置方向
             SetDir();
@@ -82,8 +69,21 @@ public class PlayerController : Controller
             //相机跟随
             SetCam();
         }
+        
+        //技能位移
+        if (isSkillMove)
+        {
+            //技能移动
+            SkillMove();
+            //相机跟随
+            SetCam();
+        }
+
+
+
     }
 
+    //设置移动人物朝向
     private void SetDir()
     {
         float angle = Vector2.SignedAngle(Dir, new Vector2(0, 1)) + m_camTrans.eulerAngles.y;
@@ -91,11 +91,19 @@ public class PlayerController : Controller
         transform.localEulerAngles = eulerAngles;
     }
 
+    //移动
     private void SetMove()
     {
         ctrl.Move(transform.forward * Time.deltaTime * Constants.PlayerMoveSpeed);
     }
 
+    //技能位移
+    private void SkillMove()
+    {
+        ctrl.Move(transform.forward * Time.deltaTime * skillMoveSpeed);
+    }
+    
+    //设置相机跟随
     public void SetCam()
     {
         if (m_camTrans != null)
@@ -103,8 +111,9 @@ public class PlayerController : Controller
             m_camTrans.position = transform.position - m_camOffset;
         }
     }
-
-    public void SetBlend(float blend)
+    
+    //设置动画混合参数
+    public override void SetBlend(float blend)
     {
         m_targetBlend = blend;
     }
@@ -126,4 +135,17 @@ public class PlayerController : Controller
 
         anim.SetFloat("Blend", m_currentBlend);
     }
+
+    //显示技能特效
+    public override void SetFx(string name, float destroy)
+    {
+        GameObject go = null;
+        if (fxDic.TryGetValue(name, out go))
+        {
+            go.SetActive(true);
+            timerSvc.AddTimeTask((tackId) => { go.SetActive(false); }, destroy);
+
+        }
+    }
+    
 }

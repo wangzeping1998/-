@@ -55,14 +55,17 @@ public class BattleMgr : MonoBehaviour
         player.transform.position = mapData.playerBornPos;
         player.transform.localEulerAngles = mapData.playerBornRote;
         player.transform.localScale = Vector3.one;
-        
+
         PlayerController playerCtrl = player.GetComponent<PlayerController>();
         playerCtrl.Init();
-        
+
         //生成角色赋予 状态管理器
         entityPlayer = new EntityPlayer();
-        entityPlayer.SetStateMgr(this.stateMgr);
-        entityPlayer.SetController(playerCtrl);
+        entityPlayer.SetBattleMgr(this); //添加战斗管理器
+        entityPlayer.SetStateMgr(this.stateMgr); //添加状态管理器
+        entityPlayer.SetSkillMgr(this.skillMgr); //添加技能管理器
+        entityPlayer.SetController(playerCtrl); //添加角色控制器
+        entityPlayer.Idle();
     }
 
     public void SetSelfPlayerMoveDir(Vector2 dir)
@@ -74,6 +77,7 @@ public class BattleMgr : MonoBehaviour
         else
         {
             entityPlayer.Move();
+            entityPlayer.SetDir(dir);
         }
     }
 
@@ -100,9 +104,10 @@ public class BattleMgr : MonoBehaviour
     {
         PECommon.Log("ReleasAttack");
     }
-    
+
     public void ReleasSkill1()
     {
+        entityPlayer.Attack(Constants.AttackSkillID);
         PECommon.Log("ReleasSkill1");
     }
 
@@ -115,4 +120,10 @@ public class BattleMgr : MonoBehaviour
     {
         PECommon.Log("ReleasSkill2");
     }
+
+    public Vector2 GetInputDir()
+    {
+        return BattleSys.instance.GetInputDir();
+    }
+
 }

@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Battle\Entity\EntityBase.cs" />
     <Compile Include="Assets\Scripts\Battle\Entity\EntityPlayer.cs" />
     <Compile Include="Assets\Scripts\Battle\FSM\IState.cs" />
+    <Compile Include="Assets\Scripts\Battle\FSM\StateAttack.cs" />
     <Compile Include="Assets\Scripts\Battle\FSM\StateIdle.cs" />
     <Compile Include="Assets\Scripts\Battle\FSM\StateMove.cs" />
     <Compile Include="Assets\Scripts\Battle\MapMgr.cs" />
@@ -119,12 +120,14 @@
     <Compile Include="Assets\Scripts\UIWindow\PlayerCtrlWind.cs" />
     <Compile Include="Assets\Scripts\UIWindow\StrongWind.cs" />
     <Compile Include="Assets\Scripts\UIWindow\TaskWind.cs" />
+    <None Include="Assets\Resources\ResCfgs\skill.xml" />
     <None Include="Assets\Resources\ResCfgs\map.xml" />
     <None Include="Assets\Resources\ResCfgs\taskreward.xml" />
     <None Include="Assets\Compond\MakeChar\Shader\PlayerShader.shader" />
     <None Include="Assets\Resources\ResCfgs\guide.xml" />
     <None Include="Assets\Resources\ResCfgs\rdname.xml" />
     <None Include="Assets\Compond\Shader\MonsterShader.shader" />
+    <None Include="Assets\Resources\ResCfgs\skillmove.xml" />
     <None Include="Assets\Compond\MakeChar\Shader\MogoFakeLight.shader" />
     <None Include="Assets\Compond\Shader\MogoSkybox.shader" />
     <None Include="Assets\Compond\MakeScene\SceneShader\MogoTransparentDiffuse.shader" />

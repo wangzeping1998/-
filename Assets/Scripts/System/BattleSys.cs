@@ -6,6 +6,7 @@
 	功能：战斗系统
 *****************************************************/
 
+using System;
 using UnityEngine;
 
 public class BattleSys : SystemRoot
@@ -33,6 +34,14 @@ public class BattleSys : SystemRoot
         SetPlayerCtrlWindState();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            ReqReleaseSkill(1);
+        }
+    }
+
     public void SetPlayerCtrlWindState(bool isActive = true)
     {
         playerCtrlWind.SetWindowState(isActive);
@@ -43,8 +52,14 @@ public class BattleSys : SystemRoot
         battleMgr.SetSelfPlayerMoveDir(dir);
     }
 
+    //根据索引释放技能
     public void ReqReleaseSkill(int index)
     {
         battleMgr.ReqReleaseSkill(index);
+    }
+
+    public Vector2 GetInputDir()
+    {
+        return playerCtrlWind.CurrentDir;
     }
 }

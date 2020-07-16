@@ -17,6 +17,8 @@ public class PathDefine
     public const string GuideCfg = "ResCfgs/guide"; //引导任务xml配置路径
     public const string StrongCfg = "ResCfgs/strong"; //引导任务xml配置路径
     public const string TaskRewardCfg = "ResCfgs/taskreward";
+    public const string SkillCfg = "ResCfgs/skill";
+    public const string SkillMoveCfg = "ResCfgs/skillmove";
 
     #endregion
 

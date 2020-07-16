@@ -21,6 +21,8 @@ public class PlayerCtrlWind : WindowRoot
     private Vector2 m_startPos = Vector2.zero; //记录开始点击位置
     private Vector2 m_defaultPos = Vector2.zero; //记录轮盘默认位置
 
+    public Vector2 CurrentDir { get; private set; }
+
     public Text txtLevel; //等级UI
     public Text txtName; //名称UI
     public Text txtExpPrg; //经验值UI
@@ -121,7 +123,7 @@ public class PlayerCtrlWind : WindowRoot
             imgDirBg.transform.position = m_defaultPos;
             SetActive(imgDirPoint, false);
             imgDirPoint.transform.localPosition = Vector2.zero;
-            
+            CurrentDir = Vector2.zero;
             BattleSys.instance.SetSelfPlayerMoveDir(Vector2.zero);
         });
 
@@ -136,6 +138,7 @@ public class PlayerCtrlWind : WindowRoot
             }
 
             imgDirPoint.transform.localPosition = dir;
+            CurrentDir = dir.normalized;
             BattleSys.instance.SetSelfPlayerMoveDir(dir.normalized);
         });
     }

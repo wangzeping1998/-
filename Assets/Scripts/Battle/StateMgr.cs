@@ -16,9 +16,12 @@ public class StateMgr : MonoBehaviour
 	public void Init()
 	{
 		PECommon.Log("StateMgr init done.");
+		fsm.Add(AniState.Born,new StateBorn());
 		fsm.Add(AniState.Idle,new StateIdle());
 		fsm.Add(AniState.Move,new StateMove());
 		fsm.Add(AniState.Attack,new StateAttack());
+		fsm.Add(AniState.Die,new StateDie());
+		fsm.Add(AniState.Hit,new StateHit());
 	}
 
 	//切换状态

@@ -34,8 +34,10 @@
         <e p="ResCfgs" t="Include">
           <e p="guide.xml" t="Include" />
           <e p="map.xml" t="Include" />
+          <e p="monster.xml" t="Include" />
           <e p="rdname.xml" t="Include" />
           <e p="skill.xml" t="Include" />
+          <e p="skillaction.xml" t="Include" />
           <e p="skillmove.xml" t="Include" />
           <e p="strong.xml" t="Include" />
           <e p="taskreward.xml" t="Include" />
@@ -46,14 +48,19 @@
           <e p="BattleMgr.cs" t="Include" />
           <e p="Controller" t="Include">
             <e p="Controller.cs" t="Include" />
+            <e p="MonsterController.cs" t="Include" />
           </e>
           <e p="Entity" t="Include">
             <e p="EntityBase.cs" t="Include" />
+            <e p="EntityMonster.cs" t="Include" />
             <e p="EntityPlayer.cs" t="Include" />
           </e>
           <e p="FSM" t="Include">
             <e p="IState.cs" t="Include" />
             <e p="StateAttack.cs" t="Include" />
+            <e p="StateBorn.cs" t="Include" />
+            <e p="StateDie.cs" t="Include" />
+            <e p="StateHit.cs" t="Include" />
             <e p="StateIdle.cs" t="Include" />
             <e p="StateMove.cs" t="Include" />
           </e>

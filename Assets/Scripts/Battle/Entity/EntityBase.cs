@@ -18,6 +18,35 @@ public class EntityBase : MonoBehaviour
 	public SkillMgr skillMgr = null;
 	public Controller controller = null;
 
+	private BattleProps m_battleProps;
+
+	public BattleProps battleProps
+	{
+		get { return m_battleProps;}
+		protected set { m_battleProps = value; }
+	}
+
+	private int m_hp;
+
+	public int HP
+	{
+		get { return m_hp;}
+		set
+		{
+			m_hp = value;
+			if (m_hp <= 0)
+			{
+				PECommon.Log("Unit Death!");
+			}
+		}
+	}
+
+	public virtual void SetBattleProps(BattleProps battleProps)
+	{
+		this.m_battleProps = battleProps;
+		this.m_hp = battleProps.hp;
+	}
+	
 	public void SetBattleMgr(BattleMgr battleMgr)
 	{
 		this.battleMgr = battleMgr;
@@ -62,6 +91,23 @@ public class EntityBase : MonoBehaviour
 			controller.SetAction(action);
 		}
 	}
+
+	#region 状态切换
+
+	public void Hit()
+	{
+		stateMgr.ChangeStatus(this,AniState.Hit,null);
+	}
+	
+	public void Die()
+	{
+		stateMgr.ChangeStatus(this,AniState.Die,null);
+	}
+	
+	public void Born()
+	{
+		stateMgr.ChangeStatus(this,AniState.Born,null);
+	}
 	
 	public void Idle()
 	{
@@ -77,12 +123,22 @@ public class EntityBase : MonoBehaviour
 	{
 		stateMgr.ChangeStatus(this,AniState.Attack,skillId);
 	}
-
+	
 	public void AttackEffect(int id)
 	{
 		if (skillMgr != null)
 		{
 			skillMgr.AttackEffect(this,id);
+		}
+	}
+	
+	#endregion
+
+	public void AttackDamage(int id)
+	{
+		if (skillMgr != null)
+		{
+			skillMgr.AttackDamage(this,id);
 		}
 	}
 
@@ -105,5 +161,15 @@ public class EntityBase : MonoBehaviour
 	public virtual Vector2 GetMoveDir()
 	{
 		return Vector2.zero;
+	}
+
+	public Vector3 GetPos()
+	{
+		return this.controller.transform.position;
+	}
+
+	public Transform GetTrans()
+	{
+		return this.controller.transform;
 	}
 }

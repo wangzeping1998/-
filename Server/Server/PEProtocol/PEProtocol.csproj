@@ -39,7 +39,7 @@
   <ItemGroup>
     <Reference Include="PESocket, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\wangz\Desktop\PESocket.dll</HintPath>
+      <HintPath>..\Libs\PESocket.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

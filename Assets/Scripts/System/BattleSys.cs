@@ -36,6 +36,7 @@ public class BattleSys : SystemRoot
 
     private void Update()
     {
+        //TODO 测试代码
         if (Input.GetKeyDown(KeyCode.J))
         {
             ReqReleaseSkill(1);
@@ -61,5 +62,10 @@ public class BattleSys : SystemRoot
     public Vector2 GetInputDir()
     {
         return playerCtrlWind.CurrentDir;
+    }
+
+    public void LoadMonster(int wave)
+    {
+        battleMgr.LoadMonster(wave);
     }
 }

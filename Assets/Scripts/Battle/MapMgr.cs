@@ -12,6 +12,12 @@ public class MapMgr : MonoBehaviour
 {
 	public void Init()
 	{
-		
+		PECommon.Log("MapMgr init...");
+		LoadMonster(1);
+	}
+
+	public void LoadMonster(int wave)
+	{
+		BattleSys.instance.LoadMonster(wave);
 	}
 }

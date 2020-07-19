@@ -43,12 +43,19 @@ public class Constants
 	//技能ID
 	public const int AttackSkillID = 101;
 
+	//Action触发参数
+	public const int ActionDefault = -1;
+	public const int ActionBorn = 0;
+	public const int ActionDie = 100;
+	public const int ActionHit = 101;
+
+	public const int DieAnimLength = 5000;
+	
 
 	//混合动画参数
 	public const int BlendIdle = 0;
 	public const int BlendWalk = 1;
 	public const int AttackAct = 1;
-	public const int NormalAct= -1;
 
 	//AudoGuideNpc
 	public const int NPCGuide = -1;
@@ -79,4 +86,11 @@ public enum TxtColor
 	Red,
 	Green,
 	Blue
+}
+
+public enum DamageType
+{
+	None,
+	AD = 1,
+	AP = 2,
 }

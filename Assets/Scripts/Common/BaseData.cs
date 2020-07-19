@@ -26,6 +26,32 @@ public class MapCfg : BaseData<MapCfg>
     public Vector3 mainCamRote;      //相机旋转
     public Vector3 playerBornPos;    //角色生成位置
     public Vector3 playerBornRote;   //角色生成旋转
+    public List<MonsterSpawnData> monsterLst;    //地图怪物生成信息
+}
+
+/// <summary>
+/// 地图怪物 数据结构
+/// </summary>
+public class MonsterSpawnData : BaseData<MonsterSpawnData>
+{
+    public int mWave;    //波次\轮
+    public int mIndex;    //序号
+    public int mLevel;    //等级
+    public MonsterCfg mCfg;    //怪物信息
+    public Vector3 mBornpos;    //生成位置
+    public Vector3 mBornRote;    //生成朝向
+}
+
+/// <summary>
+/// 怪物配置
+/// </summary>
+public class MonsterCfg : BaseData<MonsterCfg>
+{
+    public string mName;    //怪物名称
+    public string resPath;    //怪物预制体路径
+    public int skillID;
+    public float atkDis;
+    public BattleProps bps;
 }
 
 /// <summary>
@@ -55,34 +81,65 @@ public class StrongCfg : BaseData<StrongCfg>
     public int crystal;            //消耗材料
 }
 
-//任务奖励配置
+/// <summary>
+/// 任务奖励配置
+/// </summary>
 public class TaskRewardCfg : BaseData<TaskRewardCfg>
 {
-    public string taskName;
-    public int count;
-    public int exp;
-    public int coin;
+    public string taskName;    //任务名称
+    public int count;          //需要完成次数
+    public int exp;            //任务经验
+    public int coin;           //任务金币
 }
-//任务奖励数据配置
+/// <summary>
+/// 任务奖励数据配置
+/// </summary>
 public class TaskRewardData : BaseData<TaskRewardData>
 {
-    public int prgs;
-    public bool taked;
+    public int prgs;            //任务完成进度
+    public bool taked;          //奖励是否已被领取
 }
 
-//技能配置
+/// <summary>
+/// 技能配置
+/// </summary>
 public class SkillCfg : BaseData<SkillCfg>
 {
-    public string skillName;
-    public long skillTime;
-    public int aniAction;
-    public string fx;
-    public List<int> skillMoveLst;
+    public string skillName;    //技能名称
+    public long skillTime;      //持续时间
+    public int aniAction;       //动作ID
+    public string fx;            //特效路径
+    public List<int> skillMoveLst;    //位移列表
+    public List<int> skillActionLst;    //技能判断列表
+    public List<int> skillDamageLst;    //技能伤害列表
+    public DamageType dmgType;    //伤害类型
 }
-
+/// <summary>
+/// 技能位移配置
+/// </summary>
 public class SkillMoveCfg : BaseData<SkillMoveCfg>
 {
-    public long moveTime;
-    public float moveDis;
+    public long moveTime;    //移动持续时间
+    public float moveDis;    //移动距离
+    public long delayTime;    //延迟时间
+}
+
+public class SkillActionCfg : BaseData<SkillActionCfg>
+{
     public long delayTime;
+    public float radius;
+    public float angle;
+}
+
+
+public class BattleProps
+{
+    public int hp;
+    public int ad;
+    public int ap;
+    public int addef;
+    public int apdef;
+    public int dodge;
+    public int pierce;
+    public int critical;
 }

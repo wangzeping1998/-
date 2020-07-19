@@ -68,9 +68,10 @@ public class FubenSys
             }
             else
             {
+                TaskSys.Instance.CalcTaskPrgs(pd, 2);
                 msg.rspFBFight = new RspFBFight()
                 {
-                    id = pd.fuben,
+                    id = data.id,
                     power = pd.power
                 };
             }

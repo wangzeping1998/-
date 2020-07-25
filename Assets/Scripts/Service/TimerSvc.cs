@@ -37,6 +37,11 @@ public class TimerSvc : MonoBehaviour
 	{
 		pt.Update();
 	}
+
+	public double GetNowTime()
+	{
+		return pt.GetMillisecondsTime();
+	}
 	
 	
 }

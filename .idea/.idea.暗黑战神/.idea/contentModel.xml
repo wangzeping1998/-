@@ -105,6 +105,7 @@
           <e p="FubenWind.cs" t="Include" />
           <e p="GuideWind.cs" t="Include" />
           <e p="InfoWind.cs" t="Include" />
+          <e p="ItemEntityHP.cs" t="Include" />
           <e p="LoadingWind.cs" t="Include" />
           <e p="LoginWind.cs" t="Include" />
           <e p="MainCityWind.cs" t="Include" />

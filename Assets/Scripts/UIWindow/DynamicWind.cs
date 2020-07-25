@@ -20,13 +20,19 @@ public class DynamicWind : WindowRoot
 	public Animator anim;
 	public Text txtTips;
 
+	public Transform itemRootTrans;
+
 	private Queue<string> tipsQue = new Queue<string>();	//提示队列
 	private bool isTipsShow = false;	//提示标志位
+	
+	private Dictionary<string,ItemEntityHP> itemDic = new Dictionary<string, ItemEntityHP>();
 	protected override void InitWind()
 	{
 		base.InitWind();
 		SetActive(txtTips,false);
 	}
+
+	#region Tips
 
 	//向提示队列中添加需要提示的文字内容
 	//每帧尝试提取队列中的文字内容进行播放显示
@@ -37,9 +43,8 @@ public class DynamicWind : WindowRoot
 			tipsQue.Enqueue(tips);
 		}
 	}
-
 	
-	private void Update()
+	private void TipsUpdate()
 	{
 		//每帧从队列中拿到一条提示内容
 		//如果提示动画未播放完即动画正在播放时 isTipsShow一直处于ture状态，则不提取消息，等待提示动画播放完后，isTipsShow处于false后，开始提取消息
@@ -52,7 +57,7 @@ public class DynamicWind : WindowRoot
 			}
 		}
 	}
-
+	
 	//设置提示信息
 	public void SetTips(string tips)
 	{
@@ -70,7 +75,6 @@ public class DynamicWind : WindowRoot
 			isTipsShow = false;
 		}));
 	}
-
 	
 	IEnumerator animPlayDone(float sec, Action cb)
 	{
@@ -80,4 +84,77 @@ public class DynamicWind : WindowRoot
 			cb.Invoke();
 		}
 	}
+
+	#endregion
+
+	public void AddHpItemInfo(string mName,int hp,Transform trans)
+	{
+		ItemEntityHP itemEntityHp = null;
+		if (itemDic.TryGetValue(mName,out itemEntityHp))
+		{
+			itemEntityHp.SetHP(trans,hp);
+		}
+		else
+		{
+			GameObject go = resSvc.LoadPrefab(PathDefine.ItemEntityHPPrefab,true);
+			go.transform.SetParent(itemRootTrans);
+			go.transform.localPosition = new Vector2(1000,0);
+			itemEntityHp = go.GetComponent<ItemEntityHP>();
+			itemEntityHp.SetHP(trans,hp);
+			itemDic.Add(mName,itemEntityHp);
+		}
+	}
+
+
+	public void RemoveHPItemInfo(string mName)
+	{
+		ItemEntityHP itemEntityHp = null;
+		if (itemDic.TryGetValue(mName,out itemEntityHp))
+		{
+			itemDic.Remove(mName);
+			Destroy(itemEntityHp.gameObject);
+		}
+	}
+	
+	public void SetCritical(string mName,int hurt)
+	{
+		ItemEntityHP iehp = null;
+		if (itemDic.TryGetValue(mName,out iehp))
+		{
+			iehp.ShowCriticalAnim(hurt);
+		}
+	}
+
+	public void SetDodge(string mName)
+	{
+		ItemEntityHP iehp = null;
+		if (itemDic.TryGetValue(mName,out iehp))
+		{
+			iehp.ShowDodgeAnim();
+		}
+	}
+
+	public void SetHurt(string mName,int hurt)
+	{
+		ItemEntityHP iehp = null;
+		if (itemDic.TryGetValue(mName,out iehp))
+		{
+			iehp.ShowhurtHPlAnim(hurt);
+		}
+	}
+
+	public void SetHP(string mName,int oldHp,int curtHp)
+	{
+		ItemEntityHP iehp = null;
+		if (itemDic.TryGetValue(mName,out iehp))
+		{
+			iehp.SetHP(oldHp,curtHp);
+		}
+	}
+	
+	private void Update()
+	{
+		TipsUpdate();
+	}
+	
 }

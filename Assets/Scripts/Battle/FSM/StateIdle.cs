@@ -19,16 +19,24 @@ public class StateIdle : IState
 
 	public void Process(EntityBase entity,params object[] objs)
 	{
-		if (entity.GetMoveDir()!=Vector2.zero)
+		PECommon.Log("Process idle state.");
+		if (entity.nextSkillID != 0)
 		{
-			entity.Move();
-			entity.SetDir(entity.GetMoveDir());
+			entity.Attack(entity.nextSkillID);
 		}
 		else
 		{
-			entity.SetBlend(0);
+			if (entity.GetMoveDir()!=Vector2.zero)
+			{
+				entity.Move();
+				entity.SetDir(entity.GetMoveDir());
+			}
+			else
+			{
+				entity.SetBlend(0);
+			}
 		}
-;			PECommon.Log("Process idle state.");
+		
 	}
 
 	public void Exit(EntityBase entity,params object[] objs)

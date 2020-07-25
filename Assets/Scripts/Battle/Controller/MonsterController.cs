@@ -8,7 +8,7 @@
 
 using UnityEngine;
 
-public class MonsterController : Controller 
+public class MonsterController : Controller
 {
-
+	public Transform itemRoot;
 }

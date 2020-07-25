@@ -7,6 +7,7 @@
 *****************************************************/
 
 using System.Collections.Generic;
+using System.Linq;
 using PEProtocol;
 using UnityEngine;
 
@@ -98,7 +99,6 @@ public class BattleMgr : MonoBehaviour
     {
         List<MonsterSpawnData> monsterLst = this.mapCfg.monsterLst;
         for (int i = 0; i < monsterLst.Count; i++)
-        {
             if (monsterLst[i].mWave == wave)
             {
                 MonsterSpawnData msd = monsterLst[i];
@@ -111,18 +111,31 @@ public class BattleMgr : MonoBehaviour
 
                 EntityMonster entityMonster = new EntityMonster();
                 entityMonster.SetMonsterCfg(msd);
+                entityMonster.Name = go.transform.name;
+                entityMonster.SetBattleMgr(this);
                 entityMonster.SetStateMgr(this.stateMgr);
                 entityMonster.SetBattleProps(msd.mCfg.bps);
                 entityMonster.SetController(monsterCtrl);
                 monsterDic.Add(go.name, entityMonster);
-                go.SetActive(false);
+                entityMonster.SetActive(false);
+
+                GameRoot.instance.dynamicWind.AddHpItemInfo(entityMonster.Name, entityMonster.HP, monsterCtrl.itemRoot);
             }
+    }
+
+    public void RemoveMonster(string mName)
+    {
+        EntityMonster em = null;
+        if (monsterDic.TryGetValue(mName,out em))
+        {
+            monsterDic.Remove(mName);
         }
     }
 
     //获得当前批次怪物列表
     public List<EntityMonster> GetMonsters()
     {
+        return monsterDic.Values.ToList();
         List<EntityMonster> emLst = new List<EntityMonster>();
         foreach (var m in monsterDic)
         {
@@ -139,7 +152,7 @@ public class BattleMgr : MonoBehaviour
         {
             foreach (var monster in monsterDic)
             {
-                monster.Value.controller.gameObject.SetActive(true);
+                monster.Value.SetActive();
                 monster.Value.Born();
                 timerSvc.AddTimeTask((ttid) =>
                 {
@@ -153,14 +166,20 @@ public class BattleMgr : MonoBehaviour
 
     public void SetSelfPlayerMoveDir(Vector2 dir)
     {
+        if (entityPlayer.currentAnimState  == AniState.Attack)
+        {
+            return;
+        }
+        
+        
         if (dir == Vector2.zero)
         {
             entityPlayer.Idle();
         }
         else
         {
+            entityPlayer.SetDir(dir);  
             entityPlayer.Move();
-            entityPlayer.SetDir(dir);
         }
     }
 
@@ -183,24 +202,53 @@ public class BattleMgr : MonoBehaviour
         }
     }
 
+    private int[] comboArr = new int[] {111, 112, 113, 114, 115};
+    private int comboIdx = 0;
+    public double lastAtkTime = 0;
     public void ReleasNormalAttack()
     {
-        PECommon.Log("ReleasAttack");
+        if (entityPlayer.currentAnimState == AniState.Attack)
+        {
+            if (comboIdx < comboArr.Length - 1)
+            {
+                //500ms内进行点击，存数据
+                double nowTime = timerSvc.GetNowTime();
+                if (nowTime - lastAtkTime < Constants.ComboSpace && lastAtkTime != 0)
+                {
+                    entityPlayer.comboQue.Enqueue(comboArr[++comboIdx]);
+                    lastAtkTime = nowTime;
+                }
+            }
+            else
+            {
+                comboIdx = 0;
+                lastAtkTime = 0;
+            }
+        }
+        else if(entityPlayer.currentAnimState == AniState.Idle || entityPlayer.currentAnimState == AniState.Move)
+        {
+            comboIdx = 0;
+            lastAtkTime = timerSvc.GetNowTime();
+            entityPlayer.Attack(111);
+        }
+
     }
 
     public void ReleasSkill1()
     {
-        entityPlayer.Attack(Constants.AttackSkillID);
+        entityPlayer.Attack(Constants.AttackSkillID_101);
         PECommon.Log("ReleasSkill1");
     }
 
     public void ReleasSkill2()
     {
+        entityPlayer.Attack(Constants.AttackSkillID_102);
         PECommon.Log("ReleasSkill2");
     }
 
     public void ReleasSkill3()
     {
+        entityPlayer.Attack(Constants.AttackSkillID_103);
         PECommon.Log("ReleasSkill2");
     }
 
@@ -210,5 +258,9 @@ public class BattleMgr : MonoBehaviour
     }
 
     #endregion
-   
+
+    public AniState GetPlayerCurrentState()
+    {
+        return entityPlayer.GetCurrentState();
+    }
 }

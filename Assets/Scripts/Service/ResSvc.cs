@@ -737,6 +737,9 @@ public class ResSvc : MonoBehaviour
                         case "skillTime":
                             sc.skillTime = long.Parse(e.InnerText);
                             break;
+                        case "cdTime":
+                            sc.cdTime = long.Parse(e.InnerText);
+                            break;
                         case "aniAction":
                             sc.aniAction = int.Parse(e.InnerText);
                             break;
@@ -750,7 +753,7 @@ public class ResSvc : MonoBehaviour
                             {
                                 if (!string.IsNullOrEmpty(strArr[j]))
                                 {
-                                    sc.skillMoveLst.Add(int.Parse(strArr[i]));
+                                    sc.skillMoveLst.Add(int.Parse(strArr[j]));
                                 }
                             }
                         }
@@ -760,12 +763,12 @@ public class ResSvc : MonoBehaviour
                             string[] skillActionArr = e.InnerText.Split('|');
                             for (int j = 0; j < skillActionArr.Length; j++)
                             {
-                                if (string.IsNullOrEmpty(skillActionArr[i]))
+                                if (string.IsNullOrEmpty(skillActionArr[j]))
                                 {
                                     continue;
                                 }
 
-                                sc.skillActionLst.Add(int.Parse(skillActionArr[i]));
+                                sc.skillActionLst.Add(int.Parse(skillActionArr[j]));
                             }
                         }
                             break;
@@ -774,12 +777,12 @@ public class ResSvc : MonoBehaviour
                             string[] skillDamageArr = e.InnerText.Split('|');
                             for (int j = 0; j < skillDamageArr.Length; j++)
                             {
-                                if (string.IsNullOrEmpty(skillDamageArr[i]))
+                                if (string.IsNullOrEmpty(skillDamageArr[j]))
                                 {
                                     continue;
                                 }
 
-                                sc.skillDamageLst.Add(int.Parse(skillDamageArr[i]));
+                                sc.skillDamageLst.Add(int.Parse(skillDamageArr[j]));
                             }
                         }
                             break;

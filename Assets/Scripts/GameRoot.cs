@@ -40,7 +40,6 @@ public class GameRoot : MonoBehaviour
 		{
 			canvas.GetChild(i).gameObject.SetActive(false);
 		}
-		dynamicWind.SetWindowState();
 	}
 
 	private void Init()
@@ -65,6 +64,7 @@ public class GameRoot : MonoBehaviour
 		BattleSys battleSys = GetComponent<BattleSys>();
 		battleSys.InitSys();
 		
+		dynamicWind.SetWindowState();
 		//进入登入场景并加载UI
 		login.EnterLogin();
 		

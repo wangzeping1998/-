@@ -20,7 +20,7 @@ public class StateDie : IState
 		entity.SetAction(Constants.ActionDie);
 		TimerSvc.instance.AddTimeTask((taskId) =>
 		{
-			entity.controller.gameObject.SetActive(false);
+			entity.SetActive(false);
 		}, Constants.DieAnimLength);
 	}
 

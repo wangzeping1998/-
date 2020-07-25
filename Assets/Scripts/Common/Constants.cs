@@ -39,9 +39,12 @@ public class Constants
 	public const int MonsterMoveSpeed = 4;
 	
 	public const float AccelerSpeed = 5;
+	public const float AccelerHPBar = 0.5f;
 
 	//技能ID
-	public const int AttackSkillID = 101;
+	public const int AttackSkillID_101 = 101;
+	public const int AttackSkillID_102 = 102;
+	public const int AttackSkillID_103 = 103;
 
 	//Action触发参数
 	public const int ActionDefault = -1;
@@ -50,6 +53,8 @@ public class Constants
 	public const int ActionHit = 101;
 
 	public const int DieAnimLength = 5000;
+
+	public const int ComboSpace = 500;
 	
 
 	//混合动画参数

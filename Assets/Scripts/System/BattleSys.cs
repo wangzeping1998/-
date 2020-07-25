@@ -33,15 +33,7 @@ public class BattleSys : SystemRoot
         battleMgr.Init(mapId);
         SetPlayerCtrlWindState();
     }
-
-    private void Update()
-    {
-        //TODO 测试代码
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            ReqReleaseSkill(1);
-        }
-    }
+    
 
     public void SetPlayerCtrlWindState(bool isActive = true)
     {
@@ -62,6 +54,11 @@ public class BattleSys : SystemRoot
     public Vector2 GetInputDir()
     {
         return playerCtrlWind.CurrentDir;
+    }
+
+    public AniState GetPlayerCurrentState()
+    {
+        return battleMgr.GetPlayerCurrentState();
     }
 
     public void LoadMonster(int wave)

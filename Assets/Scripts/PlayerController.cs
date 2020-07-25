@@ -20,6 +20,7 @@ public class PlayerController : Controller
     private float m_currentBlend;	
     
     public GameObject daggeratk1fx;
+    public GameObject[] attackFxs;
 
     public void Init()
     {
@@ -27,9 +28,9 @@ public class PlayerController : Controller
         m_camTrans = Camera.main.transform;
         m_camOffset = transform.position - m_camTrans.position;
 
-        if (daggeratk1fx!= null)
+        for (int i = 0; i < attackFxs.Length; i++)
         {
-            base.fxDic.Add(daggeratk1fx.name,daggeratk1fx);
+            base.fxDic.Add(attackFxs[i].name,attackFxs[i]);
         }
     }
 
@@ -60,7 +61,7 @@ public class PlayerController : Controller
         }
         
         //普通移动
-        if (isMove && !isSkillMove)
+        if (isMove && isCtrl)
         {
             //设置方向
             SetDir();
@@ -78,8 +79,6 @@ public class PlayerController : Controller
             //相机跟随
             SetCam();
         }
-
-
 
     }
 
@@ -147,5 +146,20 @@ public class PlayerController : Controller
 
         }
     }
+
+    public override void SetAtkDirCamOffset(Vector2 dir)
+    {
+        float angle = Vector2.SignedAngle(dir, new Vector2(0, 1)) + m_camTrans.eulerAngles.y;
+        Vector3 eulerAngles = new Vector3(0, angle, 0);
+        transform.localEulerAngles = eulerAngles;
+    }
+
+    public override void SetAtkDir(Vector2 dir)
+    {
+        float angle = Vector2.SignedAngle(dir, new Vector2(0, 1));
+        Vector3 eulerAngles = new Vector3(0, angle, 0);
+        transform.localEulerAngles = eulerAngles;
+    }
+    
     
 }

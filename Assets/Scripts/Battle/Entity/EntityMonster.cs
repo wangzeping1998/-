@@ -36,4 +36,12 @@ public class EntityMonster : EntityBase
 
 		HP = base.battleProps.hp;
 	}
+	
+	//移除
+	public override void Remove()
+	{
+		this.battleMgr.RemoveMonster(Name);
+		GameRoot.instance.dynamicWind.RemoveHPItemInfo(Name);
+	}
+	
 }

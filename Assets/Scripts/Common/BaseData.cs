@@ -107,6 +107,7 @@ public class SkillCfg : BaseData<SkillCfg>
 {
     public string skillName;    //技能名称
     public long skillTime;      //持续时间
+    public long cdTime;    //冷却时间
     public int aniAction;       //动作ID
     public string fx;            //特效路径
     public List<int> skillMoveLst;    //位移列表

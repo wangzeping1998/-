@@ -7,19 +7,34 @@
 *****************************************************/
 
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class EntityBase : MonoBehaviour
+public class EntityBase 
 {
 	public AniState currentAnimState = AniState.None;
 
 	public BattleMgr battleMgr = null;
 	public StateMgr stateMgr = null;
 	public SkillMgr skillMgr = null;
-	public Controller controller = null;
+	protected Controller controller = null;
 
+
+	private string mName;
+	
+	public string Name
+	{
+		get { return mName; }
+		set { mName = value; }
+	}
+	
+	//连招队列
+	public Queue<int> comboQue = new Queue<int>();
+	public int nextSkillID = 0;
+	
 	private BattleProps m_battleProps;
-
+	
+	
 	public BattleProps battleProps
 	{
 		get { return m_battleProps;}
@@ -28,12 +43,15 @@ public class EntityBase : MonoBehaviour
 
 	private int m_hp;
 
+	//经过运算得到的最终血量
 	public int HP
 	{
 		get { return m_hp;}
 		set
 		{
+			SetHP(m_hp,value);
 			m_hp = value;
+
 			if (m_hp <= 0)
 			{
 				PECommon.Log("Unit Death!");
@@ -41,12 +59,8 @@ public class EntityBase : MonoBehaviour
 		}
 	}
 
-	public virtual void SetBattleProps(BattleProps battleProps)
-	{
-		this.m_battleProps = battleProps;
-		this.m_hp = battleProps.hp;
-	}
-	
+	#region 初始化赋值
+
 	public void SetBattleMgr(BattleMgr battleMgr)
 	{
 		this.battleMgr = battleMgr;
@@ -67,20 +81,32 @@ public class EntityBase : MonoBehaviour
 		this.controller = controller;
 	}
 	
-
-	public virtual void SetBlend(float blend)
+	public virtual void SetBattleProps(BattleProps battleProps)
 	{
-		if (controller!=null)
-		{
-			controller.SetBlend(blend);
-		}
+		this.m_battleProps = battleProps;
+		this.m_hp = battleProps.hp;
 	}
 
+	#endregion
+	
+
+	//设置移动方向
 	public virtual void SetDir(Vector2 dir)
 	{
 		if (controller!=null)
 		{
 			controller.Dir = dir;
+		}
+	}
+
+	#region 设置动画
+	
+	
+	public virtual void SetBlend(float blend)
+	{
+		if (controller!=null)
+		{
+			controller.SetBlend(blend);
 		}
 	}
 
@@ -92,38 +118,47 @@ public class EntityBase : MonoBehaviour
 		}
 	}
 
+	#endregion
+	
 	#region 状态切换
 
+	//切换受击状态
 	public void Hit()
 	{
 		stateMgr.ChangeStatus(this,AniState.Hit,null);
 	}
 	
+	//切换死亡状态
 	public void Die()
 	{
 		stateMgr.ChangeStatus(this,AniState.Die,null);
 	}
 	
+	//切换出生状态
 	public void Born()
 	{
 		stateMgr.ChangeStatus(this,AniState.Born,null);
 	}
 	
+	//切换待机状态
 	public void Idle()
 	{
 		stateMgr.ChangeStatus(this,AniState.Idle,null);
 	}
 	
+	//切换移动状态
 	public void Move()
 	{
 		stateMgr.ChangeStatus(this,AniState.Move,null);
 	}
 
+	//切换攻击状态
 	public void Attack(int skillId)
 	{
 		stateMgr.ChangeStatus(this,AniState.Attack,skillId);
 	}
 	
+
 	public void AttackEffect(int id)
 	{
 		if (skillMgr != null)
@@ -134,6 +169,7 @@ public class EntityBase : MonoBehaviour
 	
 	#endregion
 
+	//根据ID释放技能
 	public void AttackDamage(int id)
 	{
 		if (skillMgr != null)
@@ -141,7 +177,8 @@ public class EntityBase : MonoBehaviour
 			skillMgr.AttackDamage(this,id);
 		}
 	}
-
+	
+	//技能位移接口
 	public virtual void SetSkillMove(bool isSkillMove,float speed = 0)
 	{
 		if (controller!= null)
@@ -150,6 +187,7 @@ public class EntityBase : MonoBehaviour
 		}
 	}
 
+	//播放粒子接口
 	public virtual void SetFx(string name,float destroy)
 	{
 		if (controller != null)
@@ -163,6 +201,8 @@ public class EntityBase : MonoBehaviour
 		return Vector2.zero;
 	}
 
+	#region 获得位置与坐标属性
+
 	public Vector3 GetPos()
 	{
 		return this.controller.transform.position;
@@ -171,5 +211,118 @@ public class EntityBase : MonoBehaviour
 	public Transform GetTrans()
 	{
 		return this.controller.transform;
+	}
+
+	#endregion
+
+
+	#region 伤害数值与动画
+
+	public virtual void Critical(int hurt)
+	{
+		if (controller != null)
+		{
+			GameRoot.instance.dynamicWind.SetCritical(controller.name,hurt);
+		}
+
+	}
+
+	public virtual void Dodge()
+	{
+		if (controller != null)
+		{
+			GameRoot.instance.dynamicWind.SetDodge(controller.name);
+		}
+
+	}
+
+	public virtual void Hurt(int hurt)
+	{
+		if (controller != null)
+		{
+			GameRoot.instance.dynamicWind.SetHurt(controller.name,hurt);
+		}
+	}
+
+
+	#endregion
+	
+	//设置当前血条
+	public virtual void SetHP(int oldHp,int curtHp)
+	{
+		if (controller != null)
+		{
+			GameRoot.instance.dynamicWind.SetHP(Name,oldHp,curtHp);
+		}
+	}
+
+	//获得所有动画片段
+	public AnimationClip[] GetAnimClips()
+	{
+		if (controller != null)
+		{
+			return controller.anim.runtimeAnimatorController.animationClips;
+		}
+
+		return null;
+	}
+
+	//设置对象激活状态
+	public void SetActive(bool isActive = true)
+	{
+		if (controller != null)
+		{
+			controller.gameObject.SetActive(isActive);
+		}
+	}
+
+	//移除
+	public virtual void Remove()
+	{
+		
+	}
+
+	public virtual AniState GetCurrentState()
+	{
+		return currentAnimState;
+	}
+
+	public void ExitCurtSkill()
+	{
+		if (comboQue.Count > 0)
+		{
+			 nextSkillID = comboQue.Dequeue();
+		}
+		else
+		{
+			nextSkillID = 0;
+		}
+
+	}
+
+	public void SetIsCtrl(bool isCtrl)
+	{
+		this.controller.isCtrl = isCtrl;
+	}
+
+	public void SetAtkDir(Vector2 dir,bool isCamOffset = true)
+	{
+		if (controller != null)
+		{
+			if (isCamOffset)
+			{
+				this.controller.SetAtkDirCamOffset(dir);
+			}
+			else
+			{
+				this.controller.SetAtkDir(dir);
+			}
+			
+		}
+	}
+
+	public virtual Vector2 CalcTargetDir()
+	{
+		return Vector2.zero;
 	}
 }

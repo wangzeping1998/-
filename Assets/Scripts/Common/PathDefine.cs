@@ -78,5 +78,7 @@ public class PathDefine
     public const string TaskItemPrefab = "PrefabUI/ItemTask";
 
     #endregion
-    
+
+    public const string ItemEntityHPPrefab = "PrefabUI/itemEntityHP";
+
 }

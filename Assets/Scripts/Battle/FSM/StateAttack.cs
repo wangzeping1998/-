@@ -17,15 +17,18 @@ public class StateAttack : IState
 
 	public void Process(EntityBase entity,params object[] objs)
 	{
+		PECommon.Log("Process attck state.");
 		entity.AttackEffect((int)objs[0]);
 		entity.AttackDamage((int)objs[0]);
 		
-		PECommon.Log("Process attck state.");
+
 	}
 
 	public void Exit(EntityBase entity,params object[] objs)
 	{
-		entity.SetAction(Constants.ActionDefault);
 		PECommon.Log("Exit attck state.");
+		entity.ExitCurtSkill();
+		entity.SetAction(Constants.ActionDefault);
+
 	}
 }

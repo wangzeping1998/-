@@ -980,7 +980,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.8526115, y: 0.410671, z: 1.2464423}
+  m_LocalPosition: {x: 1.2408574, y: -2.230218, z: -2.2407684}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400060}
@@ -1101,6 +1101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 9500000}
+  itemRoot: {fileID: 400060}
 --- !u!143 &143650696309278898
 CharacterController:
   m_ObjectHideFlags: 1

@@ -119,6 +119,7 @@
     <Compile Include="Assets\Scripts\UIWindow\FubenWind.cs" />
     <Compile Include="Assets\Scripts\UIWindow\GuideWind.cs" />
     <Compile Include="Assets\Scripts\UIWindow\InfoWind.cs" />
+    <Compile Include="Assets\Scripts\UIWindow\ItemEntityHP.cs" />
     <Compile Include="Assets\Scripts\UIWindow\LoadingWind.cs" />
     <Compile Include="Assets\Scripts\UIWindow\LoginWind.cs" />
     <Compile Include="Assets\Scripts\UIWindow\MainCityWind.cs" />

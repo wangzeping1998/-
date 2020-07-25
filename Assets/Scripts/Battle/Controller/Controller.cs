@@ -18,6 +18,7 @@ public abstract class Controller : MonoBehaviour
 	
 	protected bool isMove = false;
 	protected bool isSkillMove = false;
+	public bool isCtrl = true;
 	protected float skillMoveSpeed = 0;
 	private Vector2 _dir = Vector2.zero;
 
@@ -65,6 +66,17 @@ public abstract class Controller : MonoBehaviour
 	public virtual void SetSkillMove(bool isSkillMove,float speed)
 	{
 		this.isSkillMove = isSkillMove;
+		this.isCtrl = !isSkillMove;
 		this.skillMoveSpeed = speed;
+	}
+
+	public virtual void SetAtkDirCamOffset(Vector2 dir)
+	{
+		
+	}
+
+	public virtual void SetAtkDir(Vector2 dir)
+	{
+		
 	}
 }

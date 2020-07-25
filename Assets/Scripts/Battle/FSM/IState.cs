@@ -13,6 +13,7 @@ public interface IState
 	void Exit(EntityBase entity,params object[] objs);
 }
 
+
 public enum AniState
 {
 	None,

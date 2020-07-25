@@ -33,7 +33,7 @@ public class StateHit : IState
 
 	private float GetHitAnimLength(EntityBase entity)
 	{
-		AnimationClip[] clips = entity.controller.anim.runtimeAnimatorController.animationClips;
+		AnimationClip[] clips = entity.GetAnimClips();
 		for (int i = 0; i < clips.Length; i++)
 		{
 			string animName = clips[i].name;

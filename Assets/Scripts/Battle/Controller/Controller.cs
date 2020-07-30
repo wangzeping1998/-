@@ -14,8 +14,11 @@ public abstract class Controller : MonoBehaviour
 
 	public Animator anim;
 	
-	protected Dictionary<string,GameObject> fxDic = new Dictionary<string, GameObject>();
+	public CharacterController ctrl;
 	
+	protected Dictionary<string,GameObject> fxDic = new Dictionary<string, GameObject>();
+
+	protected AudioSource _audioSource = null;
 	protected bool isMove = false;
 	protected bool isSkillMove = false;
 	public bool isCtrl = true;
@@ -77,6 +80,13 @@ public abstract class Controller : MonoBehaviour
 
 	public virtual void SetAtkDir(Vector2 dir)
 	{
-		
+		float angle = Vector2.SignedAngle(dir, new Vector2(0, 1));
+		Vector3 eulerAngles = new Vector3(0, angle, 0);
+		transform.localEulerAngles = eulerAngles;
+	}
+
+	public virtual AudioSource GetAudioSource()
+	{
+		return null;
 	}
 }

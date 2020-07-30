@@ -38,7 +38,13 @@ public class SkillMgr : MonoBehaviour
             if (sac.delayTime > 0)
             {
                 //有延迟
-                timerSvc.AddTimeTask((taskId) => { AttackAction(entity, skillData, index); }, timeSum /*延迟时间*/);
+                int taskId = timerSvc.AddTimeTask((id) =>
+                {
+                    AttackAction(entity, skillData, index);
+                    entity.RemoveActionTask(id);
+                }, timeSum /*延迟时间*/);
+                entity.AddActionTask(taskId);
+                
             }
             else
             {
@@ -51,22 +57,41 @@ public class SkillMgr : MonoBehaviour
     //判定
     public void AttackAction(EntityBase entity, SkillCfg skillCfg, int index)
     {
-        List<EntityMonster> monsterLst = entity.battleMgr.GetMonsters();
         SkillActionCfg sac = resSvc.GetSkillActionCfg(skillCfg.skillActionLst[index]);
-        int damage = skillCfg.skillDamageLst[index];
-        //对列表所有怪物进行判断
-        for (int i = 0; i < monsterLst.Count; i++)
+        
+        if (entity.enitityType == EnitityType.Player)
         {
-            //判断距离Range
-            if (IsInRange(entity, monsterLst[i], sac.radius))
+            List<EntityMonster> monsterLst = entity.battleMgr.GetMonsters();
+            int damage = skillCfg.skillDamageLst[index];
+            //对列表所有怪物进行判断
+            for (int i = 0; i < monsterLst.Count; i++)
             {
-                //判断角度Angle
-                if (IsInAngle(entity, monsterLst[i], sac.angle))
+                //判断距离Range
+                if (IsInRange(entity, monsterLst[i], sac.radius))
                 {
-                    CalcDamge(entity, monsterLst[i], skillCfg, damage);
+                    //判断角度Angle
+                    if (IsInAngle(entity, monsterLst[i], sac.angle))
+                    {
+                        CalcDamge(entity, monsterLst[i], skillCfg, damage);
+                    }
                 }
             }
         }
+        else if (entity.enitityType == EnitityType.Monster)
+        {
+            EntityPlayer enitityPlayer = entity.battleMgr.GetEnitityPlayer();
+            int damage = skillCfg.skillDamageLst[index];
+            //判断距离Range
+            if (IsInRange(entity, enitityPlayer, sac.radius))
+            {
+                //判断角度Angle
+                if (IsInAngle(entity, enitityPlayer, sac.angle))
+                {
+                    CalcDamge(entity, enitityPlayer, skillCfg, damage);
+                }
+            }
+        }
+
     }
 
     private System.Random rd = new System.Random();
@@ -114,9 +139,7 @@ public class SkillMgr : MonoBehaviour
             //计算魔法抗性
             damageSum -= self.battleProps.apdef;
         }
-        else
-        {
-        }
+
 
         //最终伤害
         if (damageSum < 0)
@@ -126,14 +149,25 @@ public class SkillMgr : MonoBehaviour
 
         if (target.HP <= damageSum)
         {
+            //死亡
             target.HP = 0;
             target.Die();
             target.Remove();
         }
         else
         {
+            //受伤 扣血
             target.HP -= damageSum;
-            target.Hit();
+            if (target.entityState  != EntityState.BtState && target.GetBreakState())
+            {
+                target.Hit();
+            }
+
+            if (target.enitityType == EnitityType.Player)
+            {
+                AudioSource audioSource = target.GetAudioSource();
+                AudioSvc.PlayAudio(Constants.AssasinHit,audioSource);
+            }
             target.Hurt(damageSum);
         }
 
@@ -165,20 +199,46 @@ public class SkillMgr : MonoBehaviour
     //技能特效与位移
     public void AttackEffect(EntityBase entity, int skillId)
     {
-        if (entity.GetMoveDir() == Vector2.zero)
-        {
-            Vector2 dir = entity.CalcTargetDir();
-            //自动攻击最近怪物
-            if ( dir != Vector2.zero)
-            {
-                entity.SetAtkDir(dir,false);
-            }
-        }
-        else
-        {
-            entity.SetAtkDir(entity.GetMoveDir());
-        }
+        //读取技能配置表
         SkillCfg skillData = resSvc.GetSkillCfg(skillId);
+        entity.curtSkillCfg = skillData;
+        //判断是否忽略碰撞 
+        if (!skillData.isCollide)
+        {
+            //忽略碰撞
+            Physics.IgnoreLayerCollision(9,10);
+            timerSvc.AddTimeTask((id) =>
+            {
+                Physics.IgnoreLayerCollision(9,10,false);
+            }, skillData.skillTime);
+        }
+
+        if (skillData.isBreak == false)
+        {
+            //霸体状态
+            entity.entityState = EntityState.BtState;
+        }
+
+
+        if (entity.enitityType == EnitityType.Player)
+        {
+            //攻击和技能的智能方向锁定
+            if (entity.GetMoveDir() == Vector2.zero)
+            {
+                Vector2 dir = entity.CalcTargetDir();
+                //自动攻击最近怪物
+                if ( dir != Vector2.zero)
+                {
+                    entity.SetAtkDir(dir,false);
+                }
+            }
+            else
+            {
+                entity.SetAtkDir(entity.GetMoveDir());
+            }  
+        }
+
+
 
         entity.SetAction(skillData.aniAction); //播放动画
         entity.SetFx(skillData.fx, skillData.skillTime); //播放特效
@@ -203,17 +263,26 @@ public class SkillMgr : MonoBehaviour
             //计算延迟
             //开始位移
             timeSum += delayTime;
-            timerSvc.AddTimeTask((taskID) => { entity.SetSkillMove(true, speed); }, timeSum);
-
+            int taskId_1 = timerSvc.AddTimeTask((id) =>
+            {
+                entity.SetSkillMove(true, speed); 
+                entity.RemoveMoveTask(id);
+            }, timeSum);
+            entity.AddMoveTask(taskId_1);
 
             //计算延迟
             //结束位移
             timeSum += time;
-            timerSvc.AddTimeTask((taskID) => { entity.SetSkillMove(true, 0); }, timeSum);
+            int taskId_2 = timerSvc.AddTimeTask((id) =>
+            {
+                entity.SetSkillMove(true, 0); 
+                entity.RemoveMoveTask(id);
+            }, timeSum);
+            entity.AddMoveTask(taskId_2);
         }
 
         //等待技能释放完成回到Idle状态
-        timerSvc.AddTimeTask((taskID) =>
+        entity.skillEndCb = timerSvc.AddTimeTask((taskID) =>
         {
             entity.SetSkillMove(false);
             entity.SetIsCtrl(true);

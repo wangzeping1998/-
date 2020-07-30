@@ -38,4 +38,21 @@ public class AudioSvc : MonoBehaviour
 		uiAudio.clip = audio;
 		uiAudio.Play();
 	}
+
+	public static void PlayAudio(string name, AudioSource auSource)
+	{
+		if (auSource == null)
+		{
+			return;
+		}
+
+		if (auSource.isPlaying)
+		{
+			return;
+		}
+		
+		AudioClip auClip = ResSvc.instance.LoadAudio("ResAudio/" + name,true);
+		auSource.clip = auClip;
+		auSource.Play();
+	}
 }

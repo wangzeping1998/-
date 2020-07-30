@@ -6,6 +6,9 @@
 		<skillTime>900</skillTime>
 		<aniAction>1</aniAction>
 		<fx>dagger_skill1</fx>
+		<isCombo>0</isCombo>
+		<isCollide>0</isCollide>
+		<isBreak>0</isBreak>
 		<dmgType>1</dmgType>
 		<skillMoveLst>1011</skillMoveLst>
 		<skillActionLst>1011|1011</skillActionLst>
@@ -17,6 +20,9 @@
 		<skillTime>1400</skillTime>
 		<aniAction>2</aniAction>
 		<fx>dagger_skill2</fx>
+		<isCombo>0</isCombo>
+		<isCollide>0</isCollide>
+		<isBreak>0</isBreak>
 		<dmgType>2</dmgType>
 		<skillMoveLst>1021|1022</skillMoveLst>
 		<skillActionLst>1021|1021|1021</skillActionLst>
@@ -28,6 +34,9 @@
 		<skillTime>1600</skillTime>
 		<aniAction>3</aniAction>
 		<fx>dagger_skill3</fx>
+		<isCombo>0</isCombo>
+		<isCollide>0</isCollide>
+		<isBreak>0</isBreak>
 		<dmgType>2</dmgType>
 		<skillMoveLst>1031|1032</skillMoveLst>
 		<skillActionLst>1031|1031|1031|1031</skillActionLst>
@@ -39,6 +48,9 @@
 		<skillTime>660</skillTime>
 		<aniAction>11</aniAction>
 		<fx>dagger_atk1</fx>
+		<isCombo>1</isCombo>
+		<isCollide>1</isCollide>
+		<isBreak>1</isBreak>
 		<dmgType>1</dmgType>
 		<skillMoveLst>1111</skillMoveLst>
 		<skillActionLst>1111</skillActionLst>
@@ -50,6 +62,9 @@
 		<skillTime>860</skillTime>
 		<aniAction>12</aniAction>
 		<fx>dagger_atk2</fx>
+		<isCombo>1</isCombo>
+		<isCollide>1</isCollide>
+		<isBreak>1</isBreak>
 		<dmgType>1</dmgType>
 		<skillMoveLst>1111</skillMoveLst>
 		<skillActionLst>1121</skillActionLst>
@@ -61,6 +76,9 @@
 		<skillTime>730</skillTime>
 		<aniAction>13</aniAction>
 		<fx>dagger_atk3</fx>
+		<isCombo>1</isCombo>
+		<isCollide>1</isCollide>
+		<isBreak>1</isBreak>
 		<dmgType>1</dmgType>
 		<skillMoveLst>1111</skillMoveLst>
 		<skillActionLst>1131</skillActionLst>
@@ -72,6 +90,9 @@
 		<skillTime>860</skillTime>
 		<aniAction>14</aniAction>
 		<fx>dagger_atk4</fx>
+		<isCombo>1</isCombo>
+		<isCollide>1</isCollide>
+		<isBreak>1</isBreak>
 		<dmgType>1</dmgType>
 		<skillMoveLst>1111</skillMoveLst>
 		<skillActionLst>1141</skillActionLst>
@@ -83,6 +104,9 @@
 		<skillTime>800</skillTime>
 		<aniAction>15</aniAction>
 		<fx>dagger_atk5</fx>
+		<isCombo>1</isCombo>
+		<isCollide>1</isCollide>
+		<isBreak>1</isBreak>
 		<dmgType>1</dmgType>
 		<skillMoveLst>1111</skillMoveLst>
 		<skillActionLst>1151</skillActionLst>
@@ -93,6 +117,9 @@
 		<cdTime>0</cdTime>
 		<skillTime>800</skillTime>
 		<aniAction>11</aniAction>
+		<isCombo>0</isCombo>
+		<isCollide>1</isCollide>
+		<isBreak>1</isBreak>
 		<dmgType>1</dmgType>
 		<skillActionLst>2111</skillActionLst>
 		<skillDamageLst>26</skillDamageLst>
@@ -102,6 +129,9 @@
 		<cdTime>0</cdTime>
 		<skillTime>800</skillTime>
 		<aniAction>11</aniAction>
+		<isCombo>0</isCombo>
+		<isCollide>1</isCollide>
+		<isBreak>0</isBreak>
 		<dmgType>2</dmgType>
 		<skillActionLst>2211</skillActionLst>
 		<skillDamageLst>65</skillDamageLst>

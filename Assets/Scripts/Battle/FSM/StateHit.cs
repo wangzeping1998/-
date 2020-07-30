@@ -13,16 +13,47 @@ public class StateHit : IState
 	public void Enter(EntityBase entity, params object[] objs)
 	{
 		entity.currentAnimState = AniState.Hit;
+		
+		for (int i = 0; i < entity.actionTaskLst.Count ; i++)
+		{
+			TimerSvc.instance.RemoveTask(entity.actionTaskLst[i]);
+		}
+		
+		for (int i = 0; i < entity.moveTaskLst.Count ; i++)
+		{
+			TimerSvc.instance.RemoveTask(entity.moveTaskLst[i]);
+		}
+
+		if (entity.skillEndCb != -1)
+		{
+			TimerSvc.instance.RemoveTask(entity.skillEndCb);
+			entity.skillEndCb = -1;
+		}
+		
+		//清空连招
+		if (entity.nextSkillID !=0 ||entity.comboQue.Count>0)
+		{
+			entity.nextSkillID = 0;
+			entity.comboQue.Clear();
+
+			entity.battleMgr.lastAtkTime = 0;
+			entity.battleMgr.comboIdx = 0;
+		}
+		
+		entity.SetDir(Vector2.zero);
+		entity.SetSkillMove(false);
 	}
 
 	public void Process(EntityBase entity, params object[] objs)
 	{
 		entity.SetAction(Constants.ActionHit);
+		entity.SetIsCtrl(false);
 		int animTime = (int) (GetHitAnimLength(entity) * 1000);
 		TimerSvc.instance.AddTimeTask((taskId) =>
 		{
 			entity.SetAction(Constants.ActionDefault);
 			entity.Idle();
+			entity.SetIsCtrl(true);
 		},animTime);
 	}
 

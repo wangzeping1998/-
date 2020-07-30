@@ -34,9 +34,20 @@ public class PlayerCtrlWind : WindowRoot
     public Button btnReleaseSkill_2;
     public Button btnReleaseSkill_3;
     
+    
+    public Text txtSelfHP;
+    public Image imgSelfHPBar;
+    private int HPSum;
+    private PlayerData _playerData;
+    
     protected override void InitWind()
     {
         base.InitWind();
+        _playerData = GameRoot.instance.playerData;
+        HPSum = _playerData.hp;
+        SetText(txtSelfHP,HPSum + "/" +HPSum);
+        imgSelfHPBar.fillAmount = 1f;
+        
         btnNormalAttack.onClick.AddListener(OnClicReleasNormalAttackBtn);
         btnReleaseSkill_1.onClick.AddListener(OnClickReleasSkill_1_Btn);
         btnReleaseSkill_2.onClick.AddListener(OnClickReleasSkill_2_Btn);
@@ -45,6 +56,8 @@ public class PlayerCtrlWind : WindowRoot
         sk1CDTime = resSvc.GetSkillCfg(101).cdTime /1000.0f;
         sk2CDTime = resSvc.GetSkillCfg(102).cdTime /1000.0f;
         sk3CDTime = resSvc.GetSkillCfg(103).cdTime /1000.0f;
+        
+        
         
         RefreshUI();
         RegisterTouchEvts();
@@ -350,4 +363,11 @@ public class PlayerCtrlWind : WindowRoot
     }
     
     #endregion
+
+    public void SetHPBar(int curtHP)
+    {
+        SetText(txtSelfHP,curtHP + "/" + HPSum);
+        float prg = curtHP * 1.0f / HPSum;
+        imgSelfHPBar.fillAmount = prg;
+    }
 }

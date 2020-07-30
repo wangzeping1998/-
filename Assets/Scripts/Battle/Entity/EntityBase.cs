@@ -18,8 +18,15 @@ public class EntityBase
 	public StateMgr stateMgr = null;
 	public SkillMgr skillMgr = null;
 	protected Controller controller = null;
+	public EnitityType enitityType = EnitityType.None;
+	public EntityState entityState = EntityState.None;
 
+	public SkillCfg curtSkillCfg = null;
 
+	public List<int> moveTaskLst = new List<int>();
+	public List<int> actionTaskLst = new List<int>();
+	public int skillEndCb = -1;
+	
 	private string mName;
 	
 	public string Name
@@ -289,6 +296,11 @@ public class EntityBase
 
 	public void ExitCurtSkill()
 	{
+
+		if (!curtSkillCfg.isBreak)
+		{
+			entityState = EntityState.None;
+		}
 		if (comboQue.Count > 0)
 		{
 			 nextSkillID = comboQue.Dequeue();
@@ -324,5 +336,52 @@ public class EntityBase
 	public virtual Vector2 CalcTargetDir()
 	{
 		return Vector2.zero;
+	}
+	
+	public virtual void TickAILogic(){}
+
+	public virtual AudioSource GetAudioSource()
+	{
+		return controller.GetAudioSource();
+	}
+
+	public virtual void AddMoveTask(int taskId)
+	{
+		moveTaskLst.Add(taskId);
+	}
+
+	public virtual void AddActionTask(int taskId)
+	{
+		actionTaskLst.Add(taskId);
+	}
+
+	public virtual void RemoveMoveTask(int taskId)
+	{
+		for (int i = 0; i < moveTaskLst.Count; i++)
+		{
+			if (moveTaskLst[i] == taskId)
+			{
+				moveTaskLst.Remove(taskId);
+				break;
+				
+			}
+		}
+	}
+	
+	public virtual void RemoveActionTask(int taskId)
+	{
+		for (int i = 0; i < actionTaskLst.Count; i++)
+		{
+			if (actionTaskLst[i] == taskId)
+			{
+				actionTaskLst.Remove(taskId);
+				break;
+			}
+		}
+	}
+
+	public virtual bool GetBreakState()
+	{
+		return true;
 	}
 }

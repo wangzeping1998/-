@@ -15,17 +15,23 @@ public class Constants
 	public const string SceneLogin = "SceneLogin";	//主城场景加载名称
 	public const int mainCityID = 10000;			//主城场景ID
 
-	//音效
+	/*--------------------------音效--------------------------- */
+	
+	//背景
 	public const string BGLogin = "bgLogin";		//登入背景音乐
 	public const string BGMainCity = "bgMainCity";	//主城背景音乐
 	public const string BGHuangye = "bgHuangYe";	//主城背景音乐
-	
-	
+	//UI
 	public const string UILoginBtn = "uiLoginBtn";	//登入按钮音效
 	public const string UIClickBtn = "uiClickBtn";	//常规UI点击音效
 	public const string UIExtenBtn = "uiExtenBtn";
 	public const string UIOpenPage = "uiOpenPage";	//角色信息UI点击音效
 	public const string UIFbitem = "fbitem";
+	//角色
+	public const string AssasinHit = "assassin_Hit";//角色受击音效
+	
+	/*-----------------------------------------------------------*/
+	
 	
 	//屏幕标准宽高
 	public const int ScreenStandardWidth = 1334;
@@ -36,7 +42,7 @@ public class Constants
 	
 	//角色移动速度
 	public const int PlayerMoveSpeed = 8;
-	public const int MonsterMoveSpeed = 4;
+	public const int MonsterMoveSpeed = 3;
 	
 	public const float AccelerSpeed = 5;
 	public const float AccelerHPBar = 0.5f;
@@ -98,4 +104,17 @@ public enum DamageType
 	None,
 	AD = 1,
 	AP = 2,
+}
+
+public enum EnitityType
+{
+	None,
+	Player,
+	Monster,
+}
+
+public enum EntityState
+{
+	None,
+	BtState,
 }

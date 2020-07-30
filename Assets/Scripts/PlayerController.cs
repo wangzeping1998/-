@@ -8,13 +8,12 @@
 
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : Controller
 {
     private Transform m_camTrans;
     private Vector3 m_camOffset;
-
-    public CharacterController ctrl;
     
     private float m_targetBlend;
     private float m_currentBlend;	
@@ -22,9 +21,11 @@ public class PlayerController : Controller
     public GameObject daggeratk1fx;
     public GameObject[] attackFxs;
 
+
     public void Init()
     {
         base.Init();
+        _audioSource = GetComponent<AudioSource>();
         m_camTrans = Camera.main.transform;
         m_camOffset = transform.position - m_camTrans.position;
 
@@ -33,7 +34,6 @@ public class PlayerController : Controller
             base.fxDic.Add(attackFxs[i].name,attackFxs[i]);
         }
     }
-
     private void Update()
     {
         #region Input
@@ -81,7 +81,6 @@ public class PlayerController : Controller
         }
 
     }
-
     //设置移动人物朝向
     private void SetDir()
     {
@@ -89,19 +88,16 @@ public class PlayerController : Controller
         Vector3 eulerAngles = new Vector3(0, angle, 0);
         transform.localEulerAngles = eulerAngles;
     }
-
     //移动
     private void SetMove()
-    {
-        ctrl.Move(transform.forward * Time.deltaTime * Constants.PlayerMoveSpeed);
-    }
-
+         {
+             ctrl.Move(transform.forward * Time.deltaTime * Constants.PlayerMoveSpeed);
+         }
     //技能位移
     private void SkillMove()
     {
         ctrl.Move(transform.forward * Time.deltaTime * skillMoveSpeed);
     }
-    
     //设置相机跟随
     public void SetCam()
     {
@@ -110,13 +106,11 @@ public class PlayerController : Controller
             m_camTrans.position = transform.position - m_camOffset;
         }
     }
-    
     //设置动画混合参数
     public override void SetBlend(float blend)
     {
         m_targetBlend = blend;
     }
-
     private void UpdateMixBlend()
     {
         if (Mathf.Abs(m_currentBlend - m_targetBlend) < Constants.AccelerSpeed * Time.deltaTime)
@@ -134,7 +128,6 @@ public class PlayerController : Controller
 
         anim.SetFloat("Blend", m_currentBlend);
     }
-
     //显示技能特效
     public override void SetFx(string name, float destroy)
     {
@@ -146,7 +139,6 @@ public class PlayerController : Controller
 
         }
     }
-
     public override void SetAtkDirCamOffset(Vector2 dir)
     {
         float angle = Vector2.SignedAngle(dir, new Vector2(0, 1)) + m_camTrans.eulerAngles.y;
@@ -154,12 +146,8 @@ public class PlayerController : Controller
         transform.localEulerAngles = eulerAngles;
     }
 
-    public override void SetAtkDir(Vector2 dir)
+    public override AudioSource GetAudioSource()
     {
-        float angle = Vector2.SignedAngle(dir, new Vector2(0, 1));
-        Vector3 eulerAngles = new Vector3(0, angle, 0);
-        transform.localEulerAngles = eulerAngles;
+        return _audioSource;
     }
-    
-    
 }

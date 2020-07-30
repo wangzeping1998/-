@@ -372,6 +372,19 @@ public class ResSvc : MonoBehaviour
                         case "resPath":
                             mc.resPath = e.InnerText;
                             break;
+                        case "isStop":
+                            mc.isStop = e.InnerText.Equals("1");
+                            break;
+                        case "mType":
+                            if (e.InnerText.Equals("1"))
+                            {
+                                mc.mType = MonsterType.Nomral;
+                            }
+                            else if (e.InnerText.Equals("2"))
+                            {
+                                mc.mType = MonsterType.Boss;
+                            }
+                            break;
                         case "skillID" :
                             mc.skillID = int.Parse(e.InnerText);
                             break;
@@ -739,6 +752,12 @@ public class ResSvc : MonoBehaviour
                             break;
                         case "cdTime":
                             sc.cdTime = long.Parse(e.InnerText);
+                            break;
+                        case "isCollide":
+                            sc.isCollide = e.InnerText.Equals("1");
+                            break;
+                        case "isBreak":
+                            sc.isBreak = e.InnerText.Equals("1");
                             break;
                         case "aniAction":
                             sc.aniAction = int.Parse(e.InnerText);

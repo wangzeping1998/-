@@ -68,7 +68,7 @@ class DBMgr
                         coin = reader.GetInt32("coin"),
                         diamond = reader.GetInt32("diamond"),
                         crystal = reader.GetInt32("crystal"),
-                        hp = reader.GetInt32("diamond"),
+                        hp = reader.GetInt32("hp"),
                         ad = reader.GetInt32("ad"),
                         ap = reader.GetInt32("ap"),
                         addef = reader.GetInt32("addef"),

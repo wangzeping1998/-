@@ -76,16 +76,15 @@ public class GameRoot : MonoBehaviour
 		instance.dynamicWind.AddTips(tips);
 	}
 
+	#region 设置玩家数据
 	public void SetPlayerData(RspLogin msg)
 	{
 		this._playerData = msg.playerData;
 	}
-
 	public void SetPlayerName(string name)
 	{
 		this._playerData.name = name;
 	}
-	
 	//完成任务后的处理
 	public void SetPlayerDataByGuide(RspGuide data)
 	{
@@ -94,7 +93,6 @@ public class GameRoot : MonoBehaviour
 		playerData.lv = data.lv;
 		playerData.guideId = data.guideId;
 	}
-
 	public void SetPlayerDataByStrong(RspStrong data)
 	{
 		playerData.coin = data.coin;
@@ -106,19 +104,16 @@ public class GameRoot : MonoBehaviour
 		playerData.apdef = data.apdef;
 		playerData.strongArr = data.strongArr;
 	}
-
 	public void SetPlayerDataByBuy(RspBuy data)
 	{
 		playerData.coin = data.coin;
 		playerData.diamond = data.diamond;
 		playerData.power = data.power;
 	}
-
 	public void SetPlayerDataByPower(PshPower data)
 	{
 		playerData.power = data.power;
 	}
-	
 	public void SetPlayerDataByTask(RspTaskReward data)
 	{
 		playerData.coin = data.coin;
@@ -126,14 +121,13 @@ public class GameRoot : MonoBehaviour
 		playerData.exp = data.exp;
 		playerData.taskArr = data.taskArr;
 	}
-
 	public void SetPlayerDataByTaskPrgs(PshTaskPrgs data)
 	{
 		playerData.taskArr = data.taskArr;
 	}
-
 	public void SetPlayerDataByFuben(RspFBFight data)
 	{
 		playerData.power = data.power;
 	}
+	#endregion
 }

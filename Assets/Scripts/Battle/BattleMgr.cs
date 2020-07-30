@@ -6,6 +6,7 @@
 	功能：战斗管理器
 *****************************************************/
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using PEProtocol;
@@ -113,6 +114,7 @@ public class BattleMgr : MonoBehaviour
                 entityMonster.SetMonsterCfg(msd);
                 entityMonster.Name = go.transform.name;
                 entityMonster.SetBattleMgr(this);
+                entityMonster.SetSkillMgr(this.skillMgr);
                 entityMonster.SetStateMgr(this.stateMgr);
                 entityMonster.SetBattleProps(msd.mCfg.bps);
                 entityMonster.SetController(monsterCtrl);
@@ -203,7 +205,7 @@ public class BattleMgr : MonoBehaviour
     }
 
     private int[] comboArr = new int[] {111, 112, 113, 114, 115};
-    private int comboIdx = 0;
+    public int comboIdx = 0;
     public double lastAtkTime = 0;
     public void ReleasNormalAttack()
     {
@@ -262,5 +264,18 @@ public class BattleMgr : MonoBehaviour
     public AniState GetPlayerCurrentState()
     {
         return entityPlayer.GetCurrentState();
+    }
+
+    public EntityPlayer GetEnitityPlayer()
+    {
+        return this.entityPlayer;
+    }
+
+    private void Update()
+    {
+        foreach (var m in monsterDic)
+        {
+            m.Value.TickAILogic();
+        }
     }
 }

@@ -15,6 +15,9 @@ public class StateIdle : IState
 		entity.currentAnimState = AniState.Idle;
 		entity.SetDir(Vector2.zero);
 		PECommon.Log("Enter idle state.");
+		entity.actionTaskLst.Clear();
+		entity.moveTaskLst.Clear();
+		entity.skillEndCb = -1;
 	}
 
 	public void Process(EntityBase entity,params object[] objs)

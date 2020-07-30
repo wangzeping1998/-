@@ -94,21 +94,5 @@ public class ItemEntityHP : MonoBehaviour
     {
         UpdateMixBlend();
         m_recTras.anchoredPosition = Camera.main.WorldToScreenPoint(m_itemRoot.position) * scale;
-
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            ShowCriticalAnim(9999);
-        }
-        
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            ShowDodgeAnim();
-        }
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            ShowhurtHPlAnim(500);
-        }
     }
 }

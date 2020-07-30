@@ -11,6 +11,10 @@ using UnityEngine;
 
 public class EntityPlayer : EntityBase 
 {
+	public EntityPlayer()
+	{
+		enitityType = EnitityType.Player;
+	}
 	public override Vector2 GetMoveDir()
 	{
 		return battleMgr.GetInputDir();
@@ -62,5 +66,25 @@ public class EntityPlayer : EntityBase
 		}
 
 		return atkMonster;
+	}
+
+	public override void Dodge()
+	{
+		GameRoot.instance.dynamicWind.SetSelfDodge();
+	}
+
+	public override void SetHP(int oldHp, int curtHp)
+	{
+		 BattleSys.instance.playerCtrlWind.SetHPBar(curtHp);
+	}
+
+	public override void Hurt(int hurt)
+	{
+		
+	}
+
+	public override void Critical(int hurt)
+	{
+		
 	}
 }

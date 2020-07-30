@@ -19,6 +19,10 @@ public class DynamicWind : WindowRoot
 {
 	public Animator anim;
 	public Text txtTips;
+	
+	public Animator animSelfDodge;
+	public Text txtSelfDodge;
+
 
 	public Transform itemRootTrans;
 
@@ -150,6 +154,12 @@ public class DynamicWind : WindowRoot
 		{
 			iehp.SetHP(oldHp,curtHp);
 		}
+	}
+
+	public void SetSelfDodge()
+	{
+		SetText(txtSelfDodge,"闪避");
+		animSelfDodge.SetTrigger("show");
 	}
 	
 	private void Update()

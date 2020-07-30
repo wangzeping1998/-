@@ -49,6 +49,8 @@ public class MonsterCfg : BaseData<MonsterCfg>
 {
     public string mName;    //怪物名称
     public string resPath;    //怪物预制体路径
+    public MonsterType mType;
+    public bool isStop;
     public int skillID;
     public float atkDis;
     public BattleProps bps;
@@ -109,6 +111,8 @@ public class SkillCfg : BaseData<SkillCfg>
     public long skillTime;      //持续时间
     public long cdTime;    //冷却时间
     public int aniAction;       //动作ID
+    public bool isCollide;
+    public bool isBreak;
     public string fx;            //特效路径
     public List<int> skillMoveLst;    //位移列表
     public List<int> skillActionLst;    //技能判断列表
@@ -143,4 +147,12 @@ public class BattleProps
     public int dodge;
     public int pierce;
     public int critical;
+}
+
+
+public enum MonsterType
+{
+    None,
+    Nomral,
+    Boss,
 }
